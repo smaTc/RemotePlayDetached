@@ -1,0 +1,7 @@
+importedApps/
+build/
+build/*
+
+fyne-cross/
+
+*.exe
