@@ -35,7 +35,7 @@ You can edit entries and also have arguments applied.
 Tested on Windows and Linux. Working so far.
 
 ## Toubleshooting
-Running applications in single threaded mode worked better for some reason, especially on WiFi. If you have problems with Streaming you should check the Steam Settings first. If there are still any problems leave me a message or open an issue here on GitHub
+If you have problems with Streaming you should check the Steam Settings first. If there are still any problems leave me a message or open an issue here on GitHub.
 
 ## Feedback and Contribution
 Feedback and Contributions are welcome. If you have improvements just open a pull request and I will have a look at your proposal. If there are any questions or suggestions just leave me a message.

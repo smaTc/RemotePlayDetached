@@ -13,13 +13,15 @@ var threaded bool = false
 
 //RunApp func
 func RunApp(app App) {
-	if threaded {
+
+	/*if threaded {
 		fmt.Println("executing App in multithread mode")
 		go executeApp(app)
 	} else {
 		fmt.Println("executing App in singlethread mode")
 		executeApp(app)
-	}
+	}*/
+	executeApp(app)
 }
 
 //Threaded func
@@ -46,7 +48,7 @@ func executeApp(app App) {
 	os.Chdir(path)
 
 	p2, _ := os.Getwd()
-	fmt.Println("path for execution:", p2, " ;executable to run:", executable)
+	fmt.Println("path for execution:", p2, " ; executable to run:", executable)
 
 	var cmd *exec.Cmd
 
@@ -56,11 +58,12 @@ func executeApp(app App) {
 		cmd = exec.Command("."+seperator+executable, argsArray...)
 	}
 
-	out, err := cmd.Output()
+	//out, err := cmd.Output()
+	err := cmd.Start()
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(string(out))
+	//fmt.Println(string(out))
 }
 
 func seperatePathFromExecutable(path string) (string, string, string) {

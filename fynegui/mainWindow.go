@@ -7,7 +7,6 @@ import (
 	"fyne.io/fyne/app"
 	"fyne.io/fyne/layout"
 	"fyne.io/fyne/widget"
-	"github.com/smaTc/RemotePlayDetached/executor"
 )
 
 var rpd fyne.App
@@ -40,17 +39,18 @@ func buildButtonBar() *fyne.Container {
 		importApp()
 	})
 
-	threadCheck := widget.NewCheck("Multithread (Slower, especially over Wifi)", func(state bool) {
-		executor.Threaded(state)
-	})
-	threadCheck.SetChecked(executor.IsThreaded())
+	//threadCheck := widget.NewCheck("Multithread (Slower, especially over Wifi)", func(state bool) {
+	//	executor.Threaded(state)
+	//})
+	//threadCheck.SetChecked(executor.IsThreaded())
 
 	exitButton := widget.NewButton("Exit", func() {
 		fmt.Println("clicked: Exit")
 		rpd.Quit()
 	})
 
-	buttonBar := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), importButton, layout.NewSpacer(), threadCheck, layout.NewSpacer(), exitButton)
+	//buttonBar := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), importButton, layout.NewSpacer(), threadCheck, layout.NewSpacer(), exitButton)
+	buttonBar := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), importButton, layout.NewSpacer(), layout.NewSpacer(), exitButton)
 
 	return buttonBar
 }
