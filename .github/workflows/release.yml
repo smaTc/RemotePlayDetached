@@ -9,7 +9,7 @@ on:
 jobs:
 
   build:
-    name: Build Linux
+    name: Build
     runs-on: ubuntu-latest
     steps:
 
@@ -23,20 +23,24 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Get dependencies
-      run: | 
-        go get -v -t -d .
+      run: |
+        sudo apt update
+        sudo apt install xorg-dev 
+        go get -v -t .
+        go get github.com/lucor/fyne-cross/cmd/fyne-cross
         if [ -f Gopkg.toml ]; then
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
             dep ensure
         fi
 
     - name: Build
-      run: go build -o RemotePlayDetached.x86_64 main.go
+      run: fyne-cross --targets=linux/amd64,windows/amd64 .
       
     - name: Make Release Package
       run: |
         mkdir build
-        cp  RemotePlayDetached.x86_64 build/
+        cp fyne-cross/bin/linux-amd64/RemotePlayDetached build/
+        cp fyne-cross/bin/windows-amd64/RemotePlayDetached build/
         
     - name: Upload Release Package
       uses: actions/upload-artifact@v1.0.0
