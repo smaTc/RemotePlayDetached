@@ -1,4 +1,4 @@
-name: Go
+name: Remote Play Detached Release Builder
 
 on:
   push:
