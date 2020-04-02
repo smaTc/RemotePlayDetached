@@ -43,7 +43,7 @@ func buildMainMenu() *fyne.MainMenu {
 			aboutWindow.Resize(fyne.NewSize(500, 400))
 
 			licenseLabel := widget.NewLabel(LICENSE)
-			licenseLabel.Resize(fyne.NewSize(450, 350))
+			//licenseLabel.Resize(fyne.NewSize(450, 350))
 
 			scrollContainer := widget.NewScrollContainer(licenseLabel)
 			//scrollContainer.Resize(fyne.NewSize(450, 350))
@@ -56,9 +56,13 @@ func buildMainMenu() *fyne.MainMenu {
 				refreshContent()
 			})
 
-			buttons := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), okButton)
+			buttons := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), layout.NewSpacer(), okButton, layout.NewSpacer())
+			//paragraphContainer := fyne.NewContainerWithLayout(layout.NewMaxLayout(), scrollContainer)
+			paragraphContainer := fyne.NewContainerWithLayout(layout.NewFixedGridLayout(fyne.NewSize(495, 380)), scrollContainer)
 
-			aboutWindow.SetContent(fyne.NewContainerWithLayout(layout.NewVBoxLayout(), scrollContainer, layout.NewSpacer(), buttons))
+			content := fyne.NewContainerWithLayout(layout.NewVBoxLayout(), paragraphContainer, layout.NewSpacer(), buttons)
+
+			aboutWindow.SetContent(content)
 
 			aboutWindow.Show()
 
