@@ -24,6 +24,8 @@ jobs:
 
     - name: Get dependencies
       run: |
+        sudo apt update
+        sudo apt install xorg-dev 
         go get -v -t .
         go get github.com/lucor/fyne-cross/cmd/fyne-cross
         if [ -f Gopkg.toml ]; then
