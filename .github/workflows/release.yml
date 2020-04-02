@@ -29,10 +29,10 @@ jobs:
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
             dep ensure
         fi
-        go get github.com/lucor/fyne-cross/cmd/fyne-cross
+        GO111MODULE=auto go get github.com/lucor/fyne-cross/cmd/fyne-cross
 
     - name: Build
-      run: $GOPATH/bin/fyne-cross --targets=linux/amd64,windows/amd64 .
+      run: fyne-cross --targets=linux/amd64,windows/amd64 .
       
     - name: Make Release Package
       run: |
