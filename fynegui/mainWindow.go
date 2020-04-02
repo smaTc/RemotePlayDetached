@@ -15,7 +15,6 @@ var mainWindow fyne.Window
 
 //Run func
 func Run() {
-	//initGui()
 	rpd = app.New()
 	mainWindow = rpd.NewWindow("Remote Play Detached")
 	mainWindow.Resize(fyne.NewSize(600, 350))
@@ -43,11 +42,7 @@ func buildMainMenu() *fyne.MainMenu {
 			aboutWindow.Resize(fyne.NewSize(500, 400))
 
 			licenseLabel := widget.NewLabel(LICENSE)
-			//licenseLabel.Resize(fyne.NewSize(450, 350))
-
 			scrollContainer := widget.NewScrollContainer(licenseLabel)
-			//scrollContainer.Resize(fyne.NewSize(450, 350))
-			//vbox := fyne.NewContainerWithLayout(layout.NewVBoxLayout(), scrollContainer)
 
 			okButton := widget.NewButton("OK", func() {
 
@@ -57,15 +52,10 @@ func buildMainMenu() *fyne.MainMenu {
 			})
 
 			buttons := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), layout.NewSpacer(), okButton, layout.NewSpacer())
-			//paragraphContainer := fyne.NewContainerWithLayout(layout.NewMaxLayout(), scrollContainer)
 			paragraphContainer := fyne.NewContainerWithLayout(layout.NewFixedGridLayout(fyne.NewSize(495, 380)), scrollContainer)
-
 			content := fyne.NewContainerWithLayout(layout.NewVBoxLayout(), paragraphContainer, layout.NewSpacer(), buttons)
-
 			aboutWindow.SetContent(content)
-
 			aboutWindow.Show()
-
 		}),
 	))
 	return mainMenu
@@ -78,17 +68,11 @@ func buildButtonBar() *fyne.Container {
 		importApp()
 	})
 
-	//threadCheck := widget.NewCheck("Multithread (Slower, especially over Wifi)", func(state bool) {
-	//	executor.Threaded(state)
-	//})
-	//threadCheck.SetChecked(executor.IsThreaded())
-
 	exitButton := widget.NewButton("Exit", func() {
 		fmt.Println("clicked: Exit")
 		rpd.Quit()
 	})
 
-	//buttonBar := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), importButton, layout.NewSpacer(), threadCheck, layout.NewSpacer(), exitButton)
 	buttonBar := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), importButton, layout.NewSpacer(), layout.NewSpacer(), exitButton)
 
 	return buttonBar

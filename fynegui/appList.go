@@ -71,7 +71,6 @@ func loadApps() *fyne.Container {
 
 	for _, app := range *apps {
 		appItem := NewAppItem(app)
-		//formItem := widget.NewFormItem(app.Name, appItem)
 		formItem := widget.NewFormItem(strconv.Itoa(counter)+". "+app.Name, appItem)
 		counter++
 		itemList = append(itemList, formItem)
