@@ -2,7 +2,6 @@ package fynegui
 
 import (
 	"fmt"
-	"strconv"
 
 	"fyne.io/fyne"
 	"fyne.io/fyne/layout"
@@ -64,25 +63,33 @@ func addToList(app executor.App) {
 }
 
 func loadApps() *fyne.Container {
-	counter := 1
+	//counter := 1
 	fmt.Println("(re)loading apps")
 	apps = executor.GetApps()
+	//itemBox := widget.NewVBox()
+
 	itemList := make([]*widget.FormItem, 0)
 
 	for _, app := range *apps {
 		appItem := NewAppItem(app)
-		formItem := widget.NewFormItem(strconv.Itoa(counter)+". "+app.Name, appItem)
-		counter++
+		formItem := widget.NewFormItem(app.Name, appItem)
+		//formItem := widget.NewFormItem(app.Name, appItem)
+		//counter++
 		itemList = append(itemList, formItem)
+		//itemBox.Append(appItem)
 	}
 
 	appList = widget.NewForm(itemList...)
 	appGroup := widget.NewGroup("Apps", appList)
+
 	appListContainer := fyne.NewContainerWithLayout(layout.NewVBoxLayout(), appGroup)
+	//appListContainer := widget.NewScrollContainer(appGroup)
 
 	//appScroller := widget.NewScrollContainer(appList)
+	//appScroller := fyne.NewContainerWithLayout(layout.NewMaxLayout(), itemBox)
+	//appScroller := widget.NewGroupWithScroller("Apps", itemBox)
 	//appScroller.Resize(fyne.NewSize(850, 490))
-	//appListContainer := fyne.NewContainerWithLayout(layout.NewVBoxLayout(), appScroller)
+	//appListContainer := fyne.NewContainerWithLayout(layout., appScroller)
 
 	return appListContainer
 }

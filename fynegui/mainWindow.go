@@ -73,7 +73,7 @@ func buildButtonBar() *fyne.Container {
 		rpd.Quit()
 	})
 
-	buttonBar := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), importButton, layout.NewSpacer(), layout.NewSpacer(), exitButton)
+	buttonBar := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), importButton, layout.NewSpacer(), exitButton)
 
 	return buttonBar
 }
