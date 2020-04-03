@@ -9,6 +9,9 @@ import (
 	"fyne.io/fyne/widget"
 )
 
+//VERSION string
+var VERSION string
+
 var rpd fyne.App
 var mainContainer *fyne.Container
 var mainWindow fyne.Window
@@ -68,12 +71,14 @@ func buildButtonBar() *fyne.Container {
 		importApp()
 	})
 
+	versionLabel := widget.NewLabel("v" + VERSION)
+
 	exitButton := widget.NewButton("Exit", func() {
 		fmt.Println("clicked: Exit")
 		rpd.Quit()
 	})
 
-	buttonBar := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), importButton, layout.NewSpacer(), exitButton)
+	buttonBar := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), importButton, layout.NewSpacer(), versionLabel, layout.NewSpacer(), exitButton)
 
 	return buttonBar
 }

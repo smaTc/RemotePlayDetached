@@ -10,23 +10,16 @@ import (
 
 var cwd string
 var threaded bool = false
-
-//RunApp func
-func RunApp(app App) {
-
-	/*if threaded {
-		fmt.Println("executing App in multithread mode")
-		go executeApp(app)
-	} else {
-		fmt.Println("executing App in singlethread mode")
-		executeApp(app)
-	}*/
-	executeApp(app)
-}
+var exitAfterExec = false
 
 //Threaded func
 func Threaded(b bool) {
 	threaded = b
+}
+
+//SetExitAfterExec func
+func SetExitAfterExec(b bool) {
+	exitAfterExec = b
 }
 
 //IsThreaded func
@@ -36,7 +29,7 @@ func IsThreaded() bool {
 
 func executeApp(app App) {
 	p, _ := os.Getwd()
-	fmt.Println("current path before exection:", p)
+	fmt.Println("current path before execution:", p)
 	var argsArray []string
 
 	if app.Args != "" {
@@ -48,7 +41,7 @@ func executeApp(app App) {
 	os.Chdir(path)
 
 	p2, _ := os.Getwd()
-	fmt.Println("path for execution:", p2, " ; executable to run:", executable)
+	fmt.Println("path for execution:", p2, "; executable to run:", executable)
 
 	var cmd *exec.Cmd
 
@@ -58,12 +51,15 @@ func executeApp(app App) {
 		cmd = exec.Command("."+seperator+executable, argsArray...)
 	}
 
-	//out, err := cmd.Output()
 	err := cmd.Start()
 	if err != nil {
 		fmt.Println(err)
 	}
-	//fmt.Println(string(out))
+
+	if exitAfterExec {
+		fmt.Println("exiting due to silent mode")
+		os.Exit(0)
+	}
 }
 
 func seperatePathFromExecutable(path string) (string, string, string) {
