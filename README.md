@@ -28,9 +28,10 @@ Remember to set execute permissions on Linux!
 Now just launch the original game in Steam and enjoy.
 
 ## Usage
-1. Click `Import`
-2. Fill the form. Path must include executable (and extension on Windows).
-3. Click `Run`
+1. Start your donor game over Steam
+2. Click `Import`
+3. Fill the form. Path must include executable (and extension on Windows).
+4. Click `Run`
 
 You can edit entries and also have arguments applied.
 
