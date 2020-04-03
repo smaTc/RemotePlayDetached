@@ -16,6 +16,9 @@ Works pretty well with applications like [Redream](https://redream.io/) and [Ret
 
 For Cross Compiling you can use [Fyne-Cross](https://fyne.io//develop/cross-compiling.html) and execute the `build.sh` File. (Linux only probably)
 
+## Download
+You can find prebuilt binaries for Windows and Linux here on [GitHub](https://github.com/smaTc/RemotePlayDetached/releases/).
+
 ## Installation
 1. Download a donor game for Remote Play on Steam (search on YouTube if you need help).
 2. Delete or move the files in the folder of that game (you can just create a subfolder so you can still launch that game from RPD), but remember the original name of the main binary (file extension included!).
