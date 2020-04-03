@@ -51,7 +51,18 @@ Command Line Support was added in v0.2
 * Linux 
     * I don't know how to pass the arguments to the game at the moment. I will update this as soon as I know.
 
-## Testing
+### Playnite
+To start an app directly via [Playnite](https://playnite.link/) do the following:
+1. Click on the Controller icon in the upper left corner
+2. Click `Add Game`->`Manually...`
+3. Fill in the Name in the `General` Tab
+4. In the `Actions` Tab click `Add Action` and fill out the Path to Steam and put this in Arguments `-applaunch <app-id of donor Game> -arg <App or Path>`
+5. Click `Save` and you're ready to go
+
+### AppID
+You can find the AppID of your donor game on [SteamDB](https://steamdb.info/)
+
+## Status
 Tested on Windows and Linux. Working so far.
 
 ## Toubleshooting
