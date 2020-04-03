@@ -35,6 +35,22 @@ Now just launch the original game in Steam and enjoy.
 
 You can edit entries and also have arguments applied.
 
+## Command Line Support
+Command Line Support was added in v0.2
+### Arguments
+* `-s` or `-silence` to disable the GUI (cannot be used alone)
+* `-a` or `-app` to run an app from your list by its name
+* `-as` or `-appsilent` to run an app from your list without GUI
+* `-r` or `-run` to run an app from the given path
+* `-rs` or `-runsilent` to run an app from the given path without GUI
+* `-h` or `-help` to list all possible arguments
+
+### Start an app completely via Command Line
+* Windows
+    * To launch an app via CMD execute `start "" /d "Drive:\Path\to\SteamFolder" Steam.exe -applaunch <app-id of donor Game> -arg <App or Path>`
+* Linux 
+    * I don't know how to pass the arguments to the game at the moment. I will update this as soon as I know.
+
 ## Testing
 Tested on Windows and Linux. Working so far.
 

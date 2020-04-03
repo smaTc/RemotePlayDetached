@@ -51,7 +51,7 @@ func checkForArgs() {
 			runDirectly = args[index+1]
 		}
 
-		if arg == "-g" || arg == "-game" {
+		if arg == "-a" || arg == "-app" {
 			runFromList = args[index+1]
 		}
 
@@ -61,7 +61,7 @@ func checkForArgs() {
 			runDirectly = args[index+1]
 		}
 
-		if arg == "-gs" || arg == "-gamesilent" {
+		if arg == "-as" || arg == "-appsilent" {
 			noGui = true
 			executor.SetExitAfterExec(true)
 			runFromList = args[index+1]
@@ -72,10 +72,10 @@ func checkForArgs() {
 			fmt.Println("Possible arguments for Remote Play Detached:")
 			fmt.Println("")
 			fmt.Println("-s or -silent to disable the gui")
-			fmt.Println("-g or -game to run a game from your list by its name")
-			fmt.Println("-gs or -gamesilent to run a game from list without gui")
-			fmt.Println("-r or -run to run a game with a given path")
-			fmt.Println("-rs or -runsilent to run a game with a given path without gui")
+			fmt.Println("-a or -app to run an app from your list by its name")
+			fmt.Println("-as or -appsilent to run an app from list without gui")
+			fmt.Println("-r or -run to run an app from a given path")
+			fmt.Println("-rs or -runsilent to run a game from a given path without gui")
 			fmt.Println("")
 			fmt.Println("===============================================================")
 			os.Exit(0)
