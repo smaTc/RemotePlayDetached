@@ -1,4 +1,6 @@
 # Remote Play Detached (RPD)
+## Discord
+I set up a [Discord Server](https://discord.gg/U3zDs6N) for anyone who wants to give feedback, suggestions or contributions.
 
 ## About
 A simple launcher that is able to launch any external game or application with Steam Remote Play Together Support (Steam Overlay works as soon as the Fullscreen is available).
@@ -69,7 +71,7 @@ Tested on Windows and Linux. Working so far.
 If you have problems with Streaming you should check the Steam Settings first. If there are still any problems leave me a message or open an issue here on GitHub.
 
 ## Feedback and Contribution
-Feedback and Contributions are welcome. If you have improvements just open a pull request and I will have a look at your proposal. If there are any questions or suggestions just leave me a message.
+Feedback and Contributions are welcome. If you have improvements just open a pull request and I will have a look at your proposal. If there are any questions, feedback or suggestions just leave me a message or join the [Discord Server](https://discord.gg/U3zDs6N)
 
 ## Email
 [smatcx@gmail.com](mailto:smatcx@gmail.com)
