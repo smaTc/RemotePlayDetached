@@ -7,14 +7,24 @@ A simple launcher that is able to launch any external game or application with S
 
 I used [Fyne](https://fyne.io/) for the GUI.
 
+## Features
+* Enable Remote Play Together for non-Steam applications
+* Enable Remote Play Together for Steam applications that normally don't support (e.g. added later via mod, thanks to @AkiraJkr for pointing that out)
+* CLI Support for integrations in other applications (e.g. Playnite)
+* Importing/Editing your applications in a list with the option to append launch arguments
+
+
 I created this Launcher to be able to easily start different non-Steam applications and use the remote play feature without copying files around all the time.
-Works pretty well with applications like [Redream](https://redream.io/) and [RetroArch](https://www.retroarch.com/)
+Works pretty well with applications like [Redream](https://redream.io/) and [RetroArch](https://www.retroarch.com/). Besides it seems that RPD also enables that feature for other Steam games if they are started with it. An example for this is Devil May Cry 4 with the [DDMK](https://github.com/serpentiem/ddmk)
+
+
+
 
 ## Building
 1. Install Go on your System.
 2. Clone the git repo.
 3. Navigate to that directory and execute `go run main.go` and let it pull the dependencies.
-4. Execute `go build -o YourPreferredName.DesiredExtension main.go`
+4. Execute `go build -o YourPreferredName.DesiredExtension main.go`.
 
 For Cross Compiling you can use [Fyne-Cross](https://fyne.io//develop/cross-compiling.html) and execute the `build.sh` File. (Linux only probably)
 
@@ -30,10 +40,10 @@ Remember to set execute permissions on Linux!
 Now just launch the original game in Steam and enjoy.
 
 ## Usage
-1. Start your donor game over Steam
-2. Click `Import`
+1. Start your donor game over Steam.
+2. Click `Import`.
 3. Fill the form. Path must include executable (and extension on Windows).
-4. Click `Run`
+4. Click `Run`.
 
 You can edit entries and also have arguments applied.
 
@@ -56,14 +66,14 @@ Command Line Support was added in v0.2
 
 ### Playnite
 To start an app directly via [Playnite](https://playnite.link/) do the following:
-1. Click on the Controller icon in the upper left corner
-2. Click `Add Game`->`Manually...`
-3. Fill in the Name in the `General` Tab
-4. In the `Actions` Tab click `Add Action` and fill out the Path to Steam and put this in Arguments `-applaunch <app-id of donor Game> -arg <App or Path>`
-5. Click `Save` and you're ready to go
+1. Click on the Controller icon in the upper left corner.
+2. Click `Add Game`->`Manually...`.
+3. Fill in the Name in the `General` Tab.
+4. In the `Actions` Tab click `Add Action` and fill out the Path to Steam and put this in Arguments `-applaunch <app-id of donor Game> -arg <App or Path>`.
+5. Click `Save` and you're ready to go.
 
 ### AppID
-You can find the AppID of your donor game on [SteamDB](https://steamdb.info/)
+You can find the AppID of your donor game on [SteamDB](https://steamdb.info/).
 
 ## Status
 Tested on Windows and Linux. Working so far.
@@ -72,7 +82,7 @@ Tested on Windows and Linux. Working so far.
 If you have problems with Streaming you should check the Steam Settings first. If there are still any problems leave me a message or open an issue here on GitHub.
 
 ## Feedback and Contribution
-Feedback and Contributions are welcome. If you have improvements just open a pull request and I will have a look at your proposal. If there are any questions, feedback or suggestions just leave me a message or join the [Discord Server](https://discord.gg/U3zDs6N)
+Feedback and Contributions are welcome. If you have improvements just open a pull request and I will have a look at your proposal. If there are any questions, feedback or suggestions just leave me a message or join the [Discord Server](https://discord.gg/U3zDs6N).
 
 ## Email
 [smatcx@gmail.com](mailto:smatcx@gmail.com)
