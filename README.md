@@ -1,4 +1,6 @@
 # Remote Play Detached (RPD)
+## Discord
+I set up a [Discord Server](https://discord.gg/U3zDs6N) for anyone who wants to give feedback, suggestions or contributions.
 
 ## About
 A simple launcher that is able to launch any external game or application with Steam Remote Play Together Support (Steam Overlay works as soon as the Fullscreen is available).
@@ -51,14 +53,25 @@ Command Line Support was added in v0.2
 * Linux 
     * I don't know how to pass the arguments to the game at the moment. I will update this as soon as I know.
 
-## Testing
+### Playnite
+To start an app directly via [Playnite](https://playnite.link/) do the following:
+1. Click on the Controller icon in the upper left corner
+2. Click `Add Game`->`Manually...`
+3. Fill in the Name in the `General` Tab
+4. In the `Actions` Tab click `Add Action` and fill out the Path to Steam and put this in Arguments `-applaunch <app-id of donor Game> -arg <App or Path>`
+5. Click `Save` and you're ready to go
+
+### AppID
+You can find the AppID of your donor game on [SteamDB](https://steamdb.info/)
+
+## Status
 Tested on Windows and Linux. Working so far.
 
 ## Toubleshooting
 If you have problems with Streaming you should check the Steam Settings first. If there are still any problems leave me a message or open an issue here on GitHub.
 
 ## Feedback and Contribution
-Feedback and Contributions are welcome. If you have improvements just open a pull request and I will have a look at your proposal. If there are any questions or suggestions just leave me a message.
+Feedback and Contributions are welcome. If you have improvements just open a pull request and I will have a look at your proposal. If there are any questions, feedback or suggestions just leave me a message or join the [Discord Server](https://discord.gg/U3zDs6N)
 
 ## Email
 [smatcx@gmail.com](mailto:smatcx@gmail.com)
