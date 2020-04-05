@@ -15,6 +15,7 @@ var VERSION string
 var exitAfterExec = false
 
 var rpd fyne.App = nil
+var logo fyne.Resource = nil
 var mainContainer *fyne.Container
 var mainWindow fyne.Window
 var popupsAfterLoading = make([]fyne.Window, 0)
@@ -23,6 +24,10 @@ var popupsAfterLoading = make([]fyne.Window, 0)
 func Run() {
 	Init()
 	mainWindow = rpd.NewWindow("Remote Play Detached")
+	if logo != nil {
+		mainWindow.SetIcon(logo)
+	}
+
 	mainWindow.Resize(fyne.NewSize(600, 350))
 	mainWindow.SetContent(buildMainContent())
 	mainWindow.SetMaster()
@@ -38,6 +43,12 @@ func Run() {
 //Init function for GUI
 func Init() bool {
 	if rpd == nil {
+		var err error
+		logo, err = fyne.LoadResourceFromPath("../resources/logo.png")
+		if err != nil {
+			logo = nil
+			fmt.Println("could not load logo")
+		}
 		rpd = app.New()
 		return true
 	}
