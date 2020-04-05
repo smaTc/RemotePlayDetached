@@ -27,7 +27,7 @@ func IsThreaded() bool {
 	return threaded
 }
 
-func executeApp(app App) {
+func executeApp(app App) error {
 	p, _ := os.Getwd()
 	fmt.Println("current path before execution:", p)
 	var argsArray []string
@@ -54,12 +54,10 @@ func executeApp(app App) {
 	err := cmd.Start()
 	if err != nil {
 		fmt.Println(err)
+		return err
 	}
+	return nil
 
-	if exitAfterExec {
-		fmt.Println("exiting due to silent mode")
-		os.Exit(0)
-	}
 }
 
 func seperatePathFromExecutable(path string) (string, string, string) {

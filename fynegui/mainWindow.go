@@ -12,18 +12,42 @@ import (
 //VERSION string
 var VERSION string
 
-var rpd fyne.App
+var exitAfterExec = false
+
+var rpd fyne.App = nil
 var mainContainer *fyne.Container
 var mainWindow fyne.Window
 
 //Run func
 func Run() {
-	rpd = app.New()
-	mainWindow = rpd.NewWindow("Remote Play Detached")
-	mainWindow.Resize(fyne.NewSize(600, 350))
-	mainWindow.SetContent(buildMainContent())
-	mainWindow.SetMaster()
+	fmt.Println("Run")
+	init := Init()
+	fmt.Println("init val:", init)
+	//if init {
 	mainWindow.ShowAndRun()
+	//} else {
+	//mainWindow.Show()
+	//}
+
+	fmt.Println("showing!!!")
+}
+
+//Init function for GUI
+func Init() bool {
+	if rpd == nil {
+		rpd = app.New()
+		mainWindow = rpd.NewWindow("Remote Play Detached")
+		mainWindow.Resize(fyne.NewSize(600, 350))
+		mainWindow.SetContent(buildMainContent())
+
+		return true
+	}
+	return false
+}
+
+//SetExitAfterExec func
+func SetExitAfterExec(b bool) {
+	exitAfterExec = b
 }
 
 func buildMainContent() *fyne.Container {

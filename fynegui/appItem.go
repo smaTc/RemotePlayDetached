@@ -32,7 +32,10 @@ func NewAppItem(app executor.App) fyne.Widget {
 
 	runButton := widget.NewButton("Run", func() {
 		fmt.Println("Run App")
-		executor.RunApp(app)
+		err := executor.RunApp(app)
+		if err != nil {
+			TextPopup(err.Error(), "Error:")
+		}
 	})
 	item.Box.Append(runButton)
 

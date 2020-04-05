@@ -1,6 +1,7 @@
 package executor
 
 import (
+	"errors"
 	"fmt"
 	"os"
 )
@@ -23,27 +24,27 @@ func Init() []App {
 }
 
 //RunApp func
-func RunApp(app App) {
-	executeApp(app)
+func RunApp(app App) error {
+	return executeApp(app)
 }
 
 //RunAppWithArgs func
-func RunAppWithArgs(mode, app string) {
+func RunAppWithArgs(mode, app string) error {
 	switch mode {
 	case "direct":
-		executeApp(App{Path: app})
+		return executeApp(App{Path: app})
 	case "list":
 		var found bool = false
 		for _, listApp := range apps {
 			if listApp.Name == app {
 				found = true
-				executeApp(listApp)
+				return executeApp(listApp)
 			}
 		}
 		if !found {
 			fmt.Println(app, "not found in Appliaction list")
-			os.Exit(1)
+			return errors.New("app not found")
 		}
 	}
-
+	return nil
 }

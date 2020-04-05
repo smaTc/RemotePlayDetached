@@ -9,7 +9,7 @@ import (
 )
 
 //VERSION const
-const VERSION = "0.2"
+const VERSION = "0.2.1"
 
 //noGui bool
 var noGui bool = false
@@ -23,9 +23,15 @@ func main() {
 	executor.Init()
 
 	if runDirectly != "" && runFromList == "" {
-		executor.RunAppWithArgs("direct", runDirectly)
+		err := executor.RunAppWithArgs("direct", runDirectly)
+		if err != nil {
+			fynegui.TextPopup(err.Error(), "Error:")
+		}
 	} else if runDirectly == "" && runFromList != "" {
-		executor.RunAppWithArgs("list", runFromList)
+		err := executor.RunAppWithArgs("list", runFromList)
+		if err != nil {
+			fynegui.TextPopup(err.Error(), "Error:")
+		}
 	} else if runDirectly != "" && runFromList != "" {
 		fmt.Println("you cannot use -r and -g together")
 		os.Exit(1)
@@ -34,6 +40,7 @@ func main() {
 	}
 
 	if !noGui {
+		fmt.Println("open main window")
 		fynegui.VERSION = VERSION
 		fynegui.Run()
 	}
