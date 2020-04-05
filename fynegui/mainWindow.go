@@ -65,7 +65,7 @@ func buildMainMenu() *fyne.MainMenu {
 		fyne.NewMenuItem("About", func() {
 			fmt.Println("clicked: About")
 			aboutWindow := rpd.NewWindow("About")
-			aboutWindow.Resize(fyne.NewSize(500, 400))
+			//aboutWindow.Resize(fyne.NewSize(500, 400))
 
 			licenseLabel := widget.NewLabel(LICENSE)
 			scrollContainer := widget.NewScrollContainer(licenseLabel)
@@ -78,7 +78,7 @@ func buildMainMenu() *fyne.MainMenu {
 			})
 
 			buttons := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), layout.NewSpacer(), okButton, layout.NewSpacer())
-			paragraphContainer := fyne.NewContainerWithLayout(layout.NewFixedGridLayout(fyne.NewSize(495, 380)), scrollContainer)
+			paragraphContainer := fyne.NewContainerWithLayout(layout.NewFixedGridLayout(fyne.NewSize(700, 400)), scrollContainer)
 			content := fyne.NewContainerWithLayout(layout.NewVBoxLayout(), paragraphContainer, layout.NewSpacer(), buttons)
 			aboutWindow.SetContent(content)
 			aboutWindow.Show()
