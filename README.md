@@ -50,8 +50,9 @@ Command Line Support was added in v0.2
 ### Start an app completely via Command Line
 * Windows
     * To launch an app via CMD execute `start "" /d "Drive:\Path\to\SteamFolder" Steam.exe -applaunch <app-id of donor Game> -arg <App or Path>`
-* Linux 
-    * I don't know how to pass the arguments to the game at the moment. I will update this as soon as I know.
+* Linux (Workaround)
+    * To launch an app via Terminal execute `steam steam://run//<appID>//"-arg <App or Path>"/`
+    * Unfortunately there is a warning that needs confirmation pops up because of the argument
 
 ### Playnite
 To start an app directly via [Playnite](https://playnite.link/) do the following:
