@@ -10,7 +10,7 @@ I used [Fyne](https://fyne.io/) for the GUI.
 ## Features
 * Enable Remote Play Together for non-Steam applications
 * Enable Remote Play Together for Steam applications that normally don't support (e.g. added later via mod, thanks to [AkiraJkr](https://github.com/AkiraJkr) for pointing that out)
-* CLI Support for integrations in other applications (e.g. Playnite)
+* CLI Support for integrations in other applications (e.g. Playnite, thanks to [darklinkpower](https://github.com/darklinkpower) for suggesting it)
 * Importing/Editing your applications in a list with the option to append launch arguments
 
 
