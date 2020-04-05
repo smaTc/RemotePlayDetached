@@ -21,8 +21,8 @@ func TextPopup(text, popupType string) {
 			rpd.Quit()
 		}
 	})
-	headerContainer := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), layout.NewSpacer(), typeLabel, layout.NewSpacer())
 
+	headerContainer := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), layout.NewSpacer(), typeLabel, layout.NewSpacer())
 	buttonContainer := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), layout.NewSpacer(), okButton, layout.NewSpacer())
 	windowContainer := fyne.NewContainerWithLayout(layout.NewVBoxLayout(), headerContainer, layout.NewSpacer(), textLabel, layout.NewSpacer(), buttonContainer)
 

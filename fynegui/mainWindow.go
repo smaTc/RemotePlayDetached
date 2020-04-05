@@ -21,9 +21,7 @@ var popupsAfterLoading = make([]fyne.Window, 0)
 
 //Run func
 func Run() {
-	fmt.Println("Run")
-	init := Init()
-	fmt.Println("init val:", init)
+	Init()
 	mainWindow = rpd.NewWindow("Remote Play Detached")
 	mainWindow.Resize(fyne.NewSize(600, 350))
 	mainWindow.SetContent(buildMainContent())
@@ -41,7 +39,6 @@ func Run() {
 func Init() bool {
 	if rpd == nil {
 		rpd = app.New()
-
 		return true
 	}
 	return false
