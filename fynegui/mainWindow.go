@@ -50,8 +50,10 @@ func SetExitAfterExec(b bool) {
 }
 
 func buildMainContent() *fyne.Container {
+	appList := buildAppListContainer()
+	buttonBar := buildButtonBar()
 	mainWindow.SetMainMenu(buildMainMenu())
-	mainContainer = fyne.NewContainerWithLayout(layout.NewVBoxLayout(), buildAppListContainer(), layout.NewSpacer(), buildButtonBar())
+	mainContainer = fyne.NewContainerWithLayout(layout.NewBorderLayout(appList, buttonBar, nil, nil), appList, buttonBar)
 	return mainContainer
 }
 

@@ -20,9 +20,19 @@ func importApp() {
 	importWindow := rpd.NewWindow("Import App")
 	importWindow.Resize(fyne.NewSize(400, 150))
 
-	name := widget.NewFormItem("Name", widget.NewEntry())
-	path := widget.NewFormItem("Path", widget.NewEntry())
-	args := widget.NewFormItem("Args", widget.NewEntry())
+	nameEntry := NewButtonEntry()
+	pathEntry := NewButtonEntry()
+	argsEntry := NewButtonEntry()
+
+	/*
+		nameEntry := widget.NewEntry()
+		pathEntry := widget.NewEntry()
+		argsEntry := widget.NewEntry()
+	*/
+
+	name := widget.NewFormItem("Name", nameEntry)
+	path := widget.NewFormItem("Path", pathEntry)
+	args := widget.NewFormItem("Args", argsEntry)
 	form := widget.NewForm(name, path, args)
 
 	cancelButton := widget.NewButton("Cancel", func() {
@@ -30,9 +40,9 @@ func importApp() {
 	})
 
 	okButton := widget.NewButton("OK", func() {
-		appName := name.Widget.(*widget.Entry).Text
-		appPath := path.Widget.(*widget.Entry).Text
-		argsString := args.Widget.(*widget.Entry).Text
+		appName := nameEntry.Text
+		appPath := pathEntry.Text
+		argsString := argsEntry.Text
 
 		if appName == "" || appPath == "" {
 			return
@@ -43,6 +53,10 @@ func importApp() {
 		executor.ImportApp(newApp)
 		refreshContent()
 	})
+
+	nameEntry.SetConfirmButton(okButton)
+	pathEntry.SetConfirmButton(okButton)
+	argsEntry.SetConfirmButton(okButton)
 
 	buttons := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), okButton, layout.NewSpacer(), cancelButton)
 
@@ -81,8 +95,21 @@ func loadApps() *fyne.Container {
 
 	appList = widget.NewForm(itemList...)
 	appGroup := widget.NewGroup("Apps", appList)
+	appListContainer := fyne.NewContainerWithLayout(layout.NewMaxLayout(), appGroup)
+	return appListContainer
 
-	appListContainer := fyne.NewContainerWithLayout(layout.NewVBoxLayout(), appGroup)
+	//appList = widget.NewForm(itemList...)
+	//fyne.
+	//scroller := widget.NewScrollContainer(appList)
+	//appListContainer := fyne.NewContainerWithLayout(layout.NewMaxLayout(), scroller)
+
+	//appListScroller := widget.NewScrollContainer(appList)
+	//appGroup := widget.NewGroupWithScroller("Apps", appList)
+	//appGroup.Resize(fyne.NewSize(400, 330))
+
+	//appListContainer := fyne.NewContainerWithLayout(layout.NewCenterLayout(), appGroup)
+
+	//appListContainer := fyne.NewContainerWithLayout(layout.NewVBoxLayout(), appGroup)
 	//appListContainer := widget.NewScrollContainer(appGroup)
 
 	//appScroller := widget.NewScrollContainer(appList)
@@ -91,5 +118,4 @@ func loadApps() *fyne.Container {
 	//appScroller.Resize(fyne.NewSize(850, 490))
 	//appListContainer := fyne.NewContainerWithLayout(layout., appScroller)
 
-	return appListContainer
 }

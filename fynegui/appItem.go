@@ -59,18 +59,18 @@ func editApp(oldApp executor.App) {
 	editWindow := rpd.NewWindow("Edit App")
 	editWindow.Resize(fyne.NewSize(400, 150))
 
-	nameWidget := widget.NewEntry()
-	nameWidget.SetText(oldApp.Name)
+	nameEntry := NewButtonEntry()
+	nameEntry.SetText(oldApp.Name)
 
-	pathWidget := widget.NewEntry()
-	pathWidget.SetText(oldApp.Path)
+	pathEntry := NewButtonEntry()
+	pathEntry.SetText(oldApp.Path)
 
-	argsWidget := widget.NewEntry()
-	argsWidget.SetText(oldApp.Args)
+	argsEntry := NewButtonEntry()
+	argsEntry.SetText(oldApp.Args)
 
-	name := widget.NewFormItem("Name", nameWidget)
-	path := widget.NewFormItem("Path", pathWidget)
-	args := widget.NewFormItem("Args", argsWidget)
+	name := widget.NewFormItem("Name", nameEntry)
+	path := widget.NewFormItem("Path", pathEntry)
+	args := widget.NewFormItem("Args", argsEntry)
 	form := widget.NewForm(name, path, args)
 
 	cancelButton := widget.NewButton("Cancel", func() {
@@ -78,9 +78,9 @@ func editApp(oldApp executor.App) {
 	})
 
 	okButton := widget.NewButton("OK", func() {
-		appName := name.Widget.(*widget.Entry).Text
-		appPath := path.Widget.(*widget.Entry).Text
-		argsString := args.Widget.(*widget.Entry).Text
+		appName := nameEntry.Text
+		appPath := pathEntry.Text
+		argsString := argsEntry.Text
 
 		if appName == "" || appPath == "" {
 			return
@@ -91,6 +91,10 @@ func editApp(oldApp executor.App) {
 		executor.EditApp(oldApp, newApp)
 		refreshContent()
 	})
+
+	nameEntry.SetConfirmButton(okButton)
+	pathEntry.SetConfirmButton(okButton)
+	argsEntry.SetConfirmButton(okButton)
 
 	buttons := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), okButton, layout.NewSpacer(), cancelButton)
 
