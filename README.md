@@ -1,4 +1,7 @@
-# Remote Play Detached (RPD)
+# Remote Play Detached (RPD) 
+If you like my work and want to sponsor some beers for me, feel free to donate.
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U6DXYQPU7JLJL)
+
 ## Discord
 I set up a [Discord Server](https://discord.gg/U3zDs6N) for anyone who wants to give feedback, suggestions or contributions.
 
