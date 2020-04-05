@@ -17,28 +17,30 @@ var exitAfterExec = false
 var rpd fyne.App = nil
 var mainContainer *fyne.Container
 var mainWindow fyne.Window
+var popupsAfterLoading = make([]fyne.Window, 0)
 
 //Run func
 func Run() {
 	fmt.Println("Run")
 	init := Init()
 	fmt.Println("init val:", init)
-	//if init {
-	mainWindow.ShowAndRun()
-	//} else {
-	//mainWindow.Show()
-	//}
-
-	fmt.Println("showing!!!")
+	mainWindow = rpd.NewWindow("Remote Play Detached")
+	mainWindow.Resize(fyne.NewSize(600, 350))
+	mainWindow.SetContent(buildMainContent())
+	mainWindow.SetMaster()
+	mainWindow.Show()
+	if len(popupsAfterLoading) > 0 {
+		for i := 0; i < len(popupsAfterLoading); i++ {
+			popupsAfterLoading[i].Show()
+		}
+	}
+	rpd.Run()
 }
 
 //Init function for GUI
 func Init() bool {
 	if rpd == nil {
 		rpd = app.New()
-		mainWindow = rpd.NewWindow("Remote Play Detached")
-		mainWindow.Resize(fyne.NewSize(600, 350))
-		mainWindow.SetContent(buildMainContent())
 
 		return true
 	}

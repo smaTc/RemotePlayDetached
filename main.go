@@ -52,6 +52,7 @@ func checkForArgs() {
 		if arg == "-s" || arg == "-silent" {
 			noGui = true
 			executor.SetExitAfterExec(true)
+			fynegui.SetExitAfterExec(true)
 		}
 
 		if arg == "-r" || arg == "-run" {
@@ -65,12 +66,14 @@ func checkForArgs() {
 		if arg == "-rs" || arg == "-runsilent" {
 			noGui = true
 			executor.SetExitAfterExec(true)
+			fynegui.SetExitAfterExec(true)
 			runDirectly = args[index+1]
 		}
 
 		if arg == "-as" || arg == "-appsilent" {
 			noGui = true
 			executor.SetExitAfterExec(true)
+			fynegui.SetExitAfterExec(true)
 			runFromList = args[index+1]
 		}
 

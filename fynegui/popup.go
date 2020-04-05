@@ -9,8 +9,8 @@ import (
 //TextPopup func
 func TextPopup(text, popupType string) {
 	var window fyne.Window
-	init := Init()
-	//Init()
+	//init := Init()
+	Init()
 	window = rpd.NewWindow("RPD Notification")
 
 	typeLabel := widget.NewLabel(popupType)
@@ -20,9 +20,6 @@ func TextPopup(text, popupType string) {
 		if exitAfterExec {
 			rpd.Quit()
 		}
-		//if init {
-		//rpd.Quit()
-		//}
 	})
 	headerContainer := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), layout.NewSpacer(), typeLabel, layout.NewSpacer())
 
@@ -30,13 +27,10 @@ func TextPopup(text, popupType string) {
 	windowContainer := fyne.NewContainerWithLayout(layout.NewVBoxLayout(), headerContainer, layout.NewSpacer(), textLabel, layout.NewSpacer(), buttonContainer)
 
 	window.SetContent(windowContainer)
-	window.Show()
-
-	if init {
-
-		Run()
-
+	if exitAfterExec {
+		window.SetMaster()
+		window.ShowAndRun()
 	} else {
-
+		popupsAfterLoading = append(popupsAfterLoading, window)
 	}
 }
