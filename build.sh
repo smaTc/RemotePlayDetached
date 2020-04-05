@@ -25,7 +25,7 @@ fi
 
 
 printf "building binaries..."
-fyne-cross --targets=linux/amd64,windows/amd64 .
+fyne-cross --targets=linux/amd64,windows/amd64 --icon=resources/logo.png .
 
 rm -rf build/fyne-cross
 mv fyne-cross build/
