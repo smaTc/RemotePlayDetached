@@ -17,7 +17,7 @@ I used [Fyne](https://fyne.io/) for the GUI.
 * Importing/Editing your applications in a list with the option to append launch arguments
 
 
-I created this Launcher to be able to easily start different non-Steam applications and use the remote play feature without copying files around all the time.
+I created this Launcher to be able to easily start different non-Steam applications and use the Remote Play Together feature without copying files around all the time.
 Works pretty well with applications like [Redream](https://redream.io/) and [RetroArch](https://www.retroarch.com/). Besides it seems that RPD also enables that feature for other Steam games if they are started with it. An example for this is Devil May Cry 4 with the [DDMK](https://github.com/serpentiem/ddmk)
 
 ## Building
@@ -35,6 +35,10 @@ You can find prebuilt binaries for Windows and Linux here on [GitHub](https://gi
 1. Download a donor game for Remote Play on Steam (search on YouTube if you need help).
 2. Delete or move the files in the folder of that game (you can just create a subfolder so you can still launch that game from RPD), but remember the original name of the main binary (file extension included!).
 3. Copy the RPD binary into the folder and rename it to the name of the original binary.
+
+### Linux only
+* Instead of doing the installation as stated above you can use the launch options to point directly to the RPD binary
+* To do this add `/path/to/RPD_binary # %command%`
 
 Remember to set execute permissions on Linux!
 Now just launch the original game in Steam and enjoy.
