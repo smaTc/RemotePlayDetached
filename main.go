@@ -9,7 +9,7 @@ import (
 )
 
 //VERSION const
-const VERSION = "0.2.2"
+const VERSION = "0.2.3"
 
 //noGui bool
 var noGui bool = false
