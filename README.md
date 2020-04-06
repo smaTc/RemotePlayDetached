@@ -16,17 +16,8 @@ I used [Fyne](https://fyne.io/) for the GUI.
 * CLI Support for integrations in other applications (e.g. Playnite, thanks to [darklinkpower](https://github.com/darklinkpower) for suggesting it)
 * Importing/Editing your applications in a list with the option to append launch arguments
 
-
 I created this Launcher to be able to easily start different non-Steam applications and use the Remote Play Together feature without copying files around all the time.
 Works pretty well with applications like [Redream](https://redream.io/) and [RetroArch](https://www.retroarch.com/). Besides it seems that RPD also enables that feature for other Steam games if they are started with it. An example for this is Devil May Cry 4 with the [DDMK](https://github.com/serpentiem/ddmk)
-
-## Building
-1. Install Go on your System.
-2. Clone the git repo.
-3. Navigate to that directory and execute `go run main.go` and let it pull the dependencies.
-4. Execute `go build -o YourPreferredName.DesiredExtension main.go`.
-
-For Cross Compiling you can use [Fyne-Cross](https://fyne.io//develop/cross-compiling.html) and execute the `build.sh` File. (Linux only probably)
 
 ## Download
 You can find prebuilt binaries for Windows and Linux here on [GitHub](https://github.com/smaTc/RemotePlayDetached/releases/).
@@ -78,6 +69,16 @@ To start an app directly via [Playnite](https://playnite.link/) do the following
 
 ### AppID
 You can find the AppID of your donor game on [SteamDB](https://steamdb.info/).
+
+## Building
+### Linux
+1. Install Go on your System.
+2. Clone this git repo outside of your GOPATH or pull via go get with `go get -v github.com/smaTc/RemotePlayDetached.git`.
+3. Navigate to that directory and execute `go mod download` if you pulled via git or `go get .` if you pulled via `go get` and let it pull the dependencies.
+4. Run `go run main.go` to check if everything works.
+5. Execute `go build -o YourPreferredName.DesiredExtension main.go`.
+
+For Cross Compiling you can use [Fyne-Cross](https://fyne.io//develop/cross-compiling.html) and execute the `build.sh` File. (Linux only probably)
 
 ## Status
 Tested on Windows and Linux. Working so far.
