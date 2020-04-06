@@ -17,9 +17,6 @@ I used [Fyne](https://fyne.io/) for the GUI.
 I created this Launcher to be able to easily start different non-Steam applications and use the remote play feature without copying files around all the time.
 Works pretty well with applications like [Redream](https://redream.io/) and [RetroArch](https://www.retroarch.com/). Besides it seems that RPD also enables that feature for other Steam games if they are started with it. An example for this is Devil May Cry 4 with the [DDMK](https://github.com/serpentiem/ddmk)
 
-
-
-
 ## Building
 1. Install Go on your System.
 2. Clone the git repo.

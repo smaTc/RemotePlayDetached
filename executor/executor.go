@@ -7,14 +7,15 @@ import (
 )
 
 var apps = make([]App, 0)
+var rpdPath string
 
 //Init func
 func Init() []App {
-	newcwd, err := os.Getwd()
-	cwd = newcwd
+	wd, err := os.Getwd()
 	if err != nil {
 		fmt.Println(err)
 	}
+	rpdPath = wd
 
 	load := checkForDataFolder()
 	if load {

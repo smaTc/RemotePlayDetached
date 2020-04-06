@@ -8,7 +8,6 @@ import (
 	"strings"
 )
 
-var cwd string
 var threaded bool = false
 var exitAfterExec = false
 
@@ -37,7 +36,7 @@ func executeApp(app App) error {
 	}
 
 	path, executable, seperator := seperatePathFromExecutable(app.Path)
-	os.Chdir(cwd)
+	os.Chdir(rpdPath)
 	os.Chdir(path)
 
 	p2, _ := os.Getwd()

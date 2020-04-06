@@ -1,8 +1,6 @@
 package fynegui
 
 import (
-	"fmt"
-
 	"fyne.io/fyne"
 	"fyne.io/fyne/widget"
 )
@@ -14,16 +12,16 @@ type ButtonEntry struct {
 }
 
 func (e *ButtonEntry) onKey() {
-	fmt.Println("Running key function")
+	//fmt.Println("Running key function")
 	e.confirmButton.OnTapped()
 }
 
 //KeyDown func
 func (e *ButtonEntry) KeyDown(key *fyne.KeyEvent) {
-	fmt.Println("key down event")
+	//fmt.Println("key down event")
 	switch key.Name {
 	case fyne.KeyReturn:
-		fmt.Println("current Key:", e.confirmButton)
+		//fmt.Println("current Key:", e.confirmButton)
 		e.onKey()
 	default:
 		e.Entry.KeyDown(key)

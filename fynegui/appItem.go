@@ -26,8 +26,14 @@ func NewAppItem(app executor.App) fyne.Widget {
 	//item.Box.Append(seperatorLabel)
 	item.Box.Append(layout.NewSpacer())
 
-	pathLabel := widget.NewLabel("Path: " + app.Path)
-	item.Box.Append(pathLabel)
+	argsContent := app.Args
+
+	if argsContent == "" {
+		argsContent = "none"
+	}
+
+	argsLabel := widget.NewLabel("Args: " + argsContent)
+	item.Box.Append(argsLabel)
 	item.Box.Append(layout.NewSpacer())
 
 	runButton := widget.NewButton("Run", func() {

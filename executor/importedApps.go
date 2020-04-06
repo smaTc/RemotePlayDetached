@@ -17,6 +17,12 @@ func GetApps() *[]App {
 
 //ImportApp func
 func ImportApp(app App) {
+	err := os.Chdir(rpdPath)
+	if err != nil {
+		fmt.Println("Error changing to RPD Path:", err)
+		return
+	}
+
 	f, err := os.Create("importedApps/" + app.Name)
 	if err != nil {
 		fmt.Println("Error creating file:", err)
@@ -44,7 +50,13 @@ func EditApp(oldApp, newApp App) {
 
 //DeleteApp func
 func DeleteApp(app App) {
-	err := os.Remove("importedApps/" + app.Name)
+	err := os.Chdir(rpdPath)
+	if err != nil {
+		fmt.Println("Error changing to RPD Path:", err)
+		return
+	}
+
+	err = os.Remove("importedApps/" + app.Name)
 	if err != nil {
 		fmt.Println(err)
 	}

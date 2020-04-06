@@ -10,7 +10,7 @@ import (
 func TextPopup(text, popupType string) {
 	var window fyne.Window
 	//init := Init()
-	Init()
+	init := Init()
 	window = rpd.NewWindow("RPD Notification")
 
 	typeLabel := widget.NewLabel(popupType)
@@ -31,6 +31,11 @@ func TextPopup(text, popupType string) {
 		window.SetMaster()
 		window.ShowAndRun()
 	} else {
-		popupsAfterLoading = append(popupsAfterLoading, window)
+		if init {
+			popupsAfterLoading = append(popupsAfterLoading, window)
+		} else {
+			window.Show()
+		}
+
 	}
 }
