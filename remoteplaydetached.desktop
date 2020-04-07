@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Remote Play Detached
+Comment=Play Games that are not on steam with remote play 
+Exec=/usr/bin/RemotePlayDetached 
+Icon=remoteplaydetached.png
+Path=~/remoteplaydetached
+Categories=Game;Application;
+Terminal=true
