@@ -1,6 +1,7 @@
 importedApps/
 build/
 build/*
+remoteplaydetached.desktop
 
 fyne-cross/
 
