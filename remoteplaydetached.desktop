@@ -3,6 +3,7 @@ Encoding=UTF-8
 Version=1.0
 Name=Remote Play Detached
 Comment=Play Games that are not on steam with remote play 
+#I execute the exec in the shell and it works, while here it doesnt work
 Exec=/usr/bin/RemotePlayDetached 
 Icon=remoteplaydetached.png
 Path=~/remoteplaydetached
