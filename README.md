@@ -22,6 +22,9 @@ Works pretty well with applications like [Redream](https://redream.io/) and [Ret
 ## Download
 You can find prebuilt binaries for Windows and Linux here on [GitHub](https://github.com/smaTc/RemotePlayDetached/releases/).
 
+For Arch Linux or any other distro that is built upon Arch users, you can find the package in the [aur](https://aur.archlinux.org/packages/remoteplaydetached-bin/). You can skip the Installation process. Note that when you link the executable as described in Linux only you have to point to /usr/bin/remoteplaydetached, because the executable is being installed there. You could also create a link wherever you like it to be.
+The aur package is not being maintained by the original author, but by @alx365 (discord: !LegendOfMiracles#1719)/
+
 ## Installation
 1. Download a donor game for Remote Play on Steam (search on YouTube if you need help).
 2. Delete or move the files in the folder of that game (you can just create a subfolder so you can still launch that game from RPD), but remember the original name of the main binary (file extension included!).
