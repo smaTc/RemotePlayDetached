@@ -47,7 +47,11 @@ func executeApp(app App) error {
 	if runtime.GOOS == "windows" {
 		cmd = exec.Command(executable, argsArray...)
 	} else {
-		cmd = exec.Command("."+seperator+executable, argsArray...)
+		if path != "" {
+			cmd = exec.Command("."+seperator+executable, argsArray...)
+		} else {
+			cmd = exec.Command(executable, argsArray...)
+		}
 	}
 
 	err := cmd.Start()
@@ -62,6 +66,7 @@ func executeApp(app App) error {
 func seperatePathFromExecutable(path string) (string, string, string) {
 	var splittedPath []string
 	var seperator string
+
 	if strings.Contains(path, "/") {
 		splittedPath = strings.Split(path, "/")
 		seperator = "/"
