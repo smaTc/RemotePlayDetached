@@ -9,7 +9,6 @@ import (
 //TextPopup func
 func TextPopup(text, popupType string) {
 	var window fyne.Window
-	//init := Init()
 	init := Init()
 	window = rpd.NewWindow("RPD Notification")
 

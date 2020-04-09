@@ -15,6 +15,7 @@ var appList *widget.Form
 
 //var appList widget.NewVBox
 var appListContainer *fyne.Container
+var appListGroup *widget.Group
 
 func importApp() {
 	importWindow := rpd.NewWindow("Import App")
@@ -65,9 +66,9 @@ func importApp() {
 	importWindow.Show()
 }
 
-func buildAppListContainer() *fyne.Container {
-	appListContainer = loadApps()
-	return appListContainer
+func buildAppListContainer() *widget.Group {
+	appListGroup = loadApps()
+	return appListGroup
 }
 
 func addToList(app executor.App) {
@@ -76,46 +77,19 @@ func addToList(app executor.App) {
 	appList.AppendItem(formItem)
 }
 
-func loadApps() *fyne.Container {
-	//counter := 1
+func loadApps() *widget.Group {
 	fmt.Println("(re)loading apps")
 	apps = executor.GetApps()
-	//itemBox := widget.NewVBox()
 
 	itemList := make([]*widget.FormItem, 0)
 
 	for _, app := range *apps {
 		appItem := NewAppItem(app)
 		formItem := widget.NewFormItem(app.Name, appItem)
-		//formItem := widget.NewFormItem(app.Name, appItem)
-		//counter++
 		itemList = append(itemList, formItem)
-		//itemBox.Append(appItem)
 	}
 
 	appList = widget.NewForm(itemList...)
-	appGroup := widget.NewGroup("Apps", appList)
-	appListContainer := fyne.NewContainerWithLayout(layout.NewMaxLayout(), appGroup)
-	return appListContainer
-
-	//appList = widget.NewForm(itemList...)
-	//fyne.
-	//scroller := widget.NewScrollContainer(appList)
-	//appListContainer := fyne.NewContainerWithLayout(layout.NewMaxLayout(), scroller)
-
-	//appListScroller := widget.NewScrollContainer(appList)
-	//appGroup := widget.NewGroupWithScroller("Apps", appList)
-	//appGroup.Resize(fyne.NewSize(400, 330))
-
-	//appListContainer := fyne.NewContainerWithLayout(layout.NewCenterLayout(), appGroup)
-
-	//appListContainer := fyne.NewContainerWithLayout(layout.NewVBoxLayout(), appGroup)
-	//appListContainer := widget.NewScrollContainer(appGroup)
-
-	//appScroller := widget.NewScrollContainer(appList)
-	//appScroller := fyne.NewContainerWithLayout(layout.NewMaxLayout(), itemBox)
-	//appScroller := widget.NewGroupWithScroller("Apps", itemBox)
-	//appScroller.Resize(fyne.NewSize(850, 490))
-	//appListContainer := fyne.NewContainerWithLayout(layout., appScroller)
-
+	appGroup := widget.NewGroupWithScroller("Apps", appList)
+	return appGroup
 }

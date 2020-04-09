@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"sort"
 	"strings"
 )
 
@@ -40,6 +41,7 @@ func ImportApp(app App) {
 	f.Sync()
 
 	apps = append(apps, app)
+	sortApps()
 }
 
 //EditApp func
@@ -102,6 +104,12 @@ func loadImportedApps() []App {
 	}
 	apps = loadedApps
 	return loadedApps
+}
+
+func sortApps() {
+	sort.Slice(apps, func(i, j int) bool {
+		return apps[i].Name < apps[j].Name
+	})
 }
 
 func checkForDataFolder() bool {

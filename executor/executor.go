@@ -44,7 +44,7 @@ func RunAppWithArgs(mode, app string) error {
 		}
 		if !found {
 			fmt.Println(app, "not found in Appliaction list")
-			return errors.New("app not found")
+			return errors.New(app + " app not found")
 		}
 	}
 	return nil

@@ -20,10 +20,6 @@ func NewAppItem(app executor.App) fyne.Widget {
 	item := &AppItem{App: app}
 	item.ExtendBaseWidget(item)
 	item.Box = *widget.NewHBox()
-
-	//item.Box.Append(layout.NewSpacer())
-	//seperatorLabel := widget.NewLabel("App: " + app.Name)
-	//item.Box.Append(seperatorLabel)
 	item.Box.Append(layout.NewSpacer())
 
 	argsContent := app.Args

@@ -9,7 +9,7 @@ import (
 )
 
 //VERSION const
-const VERSION = "0.2.4"
+const VERSION = "0.3"
 
 //noGui bool
 var noGui bool = false
@@ -40,7 +40,6 @@ func main() {
 	}
 
 	if !noGui {
-		fmt.Println("open main window")
 		fynegui.VERSION = VERSION
 		fynegui.Run()
 	}

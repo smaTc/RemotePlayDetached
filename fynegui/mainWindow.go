@@ -64,7 +64,7 @@ func buildMainContent() *fyne.Container {
 	appList := buildAppListContainer()
 	buttonBar := buildButtonBar()
 	mainWindow.SetMainMenu(buildMainMenu())
-	mainContainer = fyne.NewContainerWithLayout(layout.NewBorderLayout(appList, buttonBar, nil, nil), appList, buttonBar)
+	mainContainer = fyne.NewContainerWithLayout(layout.NewBorderLayout(nil, buttonBar, nil, nil), appList, buttonBar)
 	return mainContainer
 }
 
@@ -78,7 +78,6 @@ func buildMainMenu() *fyne.MainMenu {
 		fyne.NewMenuItem("About", func() {
 			fmt.Println("clicked: About")
 			aboutWindow := rpd.NewWindow("About")
-			//aboutWindow.Resize(fyne.NewSize(500, 400))
 
 			licenseLabel := widget.NewLabel(LICENSE)
 			scrollContainer := widget.NewScrollContainer(licenseLabel)
@@ -103,18 +102,15 @@ func buildMainMenu() *fyne.MainMenu {
 func buildButtonBar() *fyne.Container {
 
 	importButton := widget.NewButton("Import", func() {
-		fmt.Println("clicked: Import")
 		importApp()
 	})
 
 	versionLabel := widget.NewLabel("v" + VERSION)
 
 	exitButton := widget.NewButton("Exit", func() {
-		fmt.Println("clicked: Exit")
 		rpd.Quit()
 	})
 
 	buttonBar := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), importButton, layout.NewSpacer(), versionLabel, layout.NewSpacer(), exitButton)
-
 	return buttonBar
 }
