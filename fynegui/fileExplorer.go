@@ -140,6 +140,30 @@ func getDirectoryList(path string) *widget.Group {
 	return directoryGroup
 }
 
+func rootSelector() *fyne.Container {
+	var rootSelect *widget.Select
+	if runtime.GOOS == "windows" {
+
+	} else {
+		dirs, _ := getDirectoryContent("/")
+		var dirStrings = make([]string, len(dirs))
+		for i, dir := range dirs {
+			dirStrings[i] = dir.Name()
+		}
+
+		rootSelect = widget.NewSelect(dirStrings, func(newDir string) {
+			if newDir == osSeparator {
+				currentPath = newDir
+			} else {
+				currentPath = osSeparator + newDir
+			}
+			refreshExplorer()
+		})
+	}
+
+	return fyne.NewContainerWithLayout(layout.NewHBoxLayout(), rootSelect, layout.NewSpacer())
+}
+
 func explorerButtonColumn() *fyne.Container {
 	selectButton := widget.NewButton("Select", func() {
 		fmt.Println("clicked Select")
