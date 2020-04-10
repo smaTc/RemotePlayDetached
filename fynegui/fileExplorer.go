@@ -39,7 +39,7 @@ func FileExplorer(pathEntry *ButtonEntry) {
 func openExplorerWindow(path string) {
 	explorerWindow = rpd.NewWindow("File Explorer")
 	explorerWindow.Resize(fyne.NewSize(600, 500))
-	currentDirectory := getDirectoryContent(path)
+	currentDirectory := getDirectoryList(path)
 	buttonColumn := explorerButtonColumn()
 
 	explorerContainer := fyne.NewContainerWithLayout(layout.NewBorderLayout(nil, buttonColumn, nil, nil), currentDirectory, buttonColumn)
@@ -50,13 +50,13 @@ func openExplorerWindow(path string) {
 
 func refreshExplorer() {
 	buttonColumn := explorerButtonColumn()
-	currentDirectory := getDirectoryContent(currentPath)
+	currentDirectory := getDirectoryList(currentPath)
 	explorerContainer := fyne.NewContainerWithLayout(layout.NewBorderLayout(nil, buttonColumn, nil, nil), currentDirectory, buttonColumn)
 	explorerWindow.SetContent(explorerContainer)
 
 }
 
-func getDirectoryContent(path string) *widget.Group {
+func getDirectoryContent(path string) ([]os.FileInfo, []os.FileInfo) {
 	content, err := ioutil.ReadDir(path)
 	if err != nil {
 		fmt.Println("Could not read directory", path)
@@ -80,6 +80,13 @@ func getDirectoryContent(path string) *widget.Group {
 	sort.Slice(files, func(i, j int) bool {
 		return files[i].Name() < files[j].Name()
 	})
+
+	return dirs, files
+}
+
+func getDirectoryList(path string) *widget.Group {
+
+	dirs, files := getDirectoryContent(path)
 
 	directory := make([]*widget.FormItem, 0)
 
@@ -150,5 +157,4 @@ func explorerButtonColumn() *fyne.Container {
 
 	buttonBar := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), selectButton, layout.NewSpacer(), selectedLabel, layout.NewSpacer(), cancelButton)
 	return buttonBar
-
 }
