@@ -44,10 +44,10 @@ type ClickLabel struct {
 }
 
 //NewClickLabel func
-func NewClickLabel(labelName string, t func()) *ClickLabel {
+func NewClickLabel(labelName string, t func()) ClickLabel {
 	l := widget.NewLabel(labelName)
-	cl := &ClickLabel{Label: *l, tapped: t}
-	cl.ExtendBaseWidget(cl)
+	cl := ClickLabel{Label: *l, tapped: t}
+	cl.ExtendBaseWidget(&cl)
 	return cl
 }
 
