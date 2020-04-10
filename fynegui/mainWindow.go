@@ -68,7 +68,7 @@ func buildMainContent() *fyne.Container {
 	return mainContainer
 }
 
-func refreshContent() {
+func refreshMainWindow() {
 	mainWindow.SetContent(buildMainContent())
 }
 
@@ -86,7 +86,7 @@ func buildMainMenu() *fyne.MainMenu {
 
 				aboutWindow.Close()
 
-				refreshContent()
+				refreshMainWindow()
 			})
 
 			buttons := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), layout.NewSpacer(), okButton, layout.NewSpacer())

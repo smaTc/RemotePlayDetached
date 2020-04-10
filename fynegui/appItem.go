@@ -50,7 +50,7 @@ func NewAppItem(app executor.App) fyne.Widget {
 	deleteButton := widget.NewButton("Delete", func() {
 		fmt.Println("Delete App")
 		executor.DeleteApp(app)
-		refreshContent()
+		refreshMainWindow()
 	})
 	item.Box.Append(deleteButton)
 
@@ -91,14 +91,18 @@ func editApp(oldApp executor.App) {
 		newApp := executor.App{Name: appName, Path: appPath, Args: argsString}
 		editWindow.Close()
 		executor.EditApp(oldApp, newApp)
-		refreshContent()
+		refreshMainWindow()
+	})
+
+	fileExlporerButton := widget.NewButton("File Explorer", func() {
+		FileExplorer(pathEntry)
 	})
 
 	nameEntry.SetConfirmButton(okButton)
 	pathEntry.SetConfirmButton(okButton)
 	argsEntry.SetConfirmButton(okButton)
 
-	buttons := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), okButton, layout.NewSpacer(), cancelButton)
+	buttons := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), okButton, layout.NewSpacer(), fileExlporerButton, layout.NewSpacer(), cancelButton)
 
 	editWindow.SetContent(fyne.NewContainerWithLayout(layout.NewVBoxLayout(), form, layout.NewSpacer(), buttons))
 

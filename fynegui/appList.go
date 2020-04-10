@@ -56,18 +56,18 @@ func importApp() {
 		newApp := executor.App{Name: appName, Path: appPath, Args: argsString}
 		importWindow.Close()
 		executor.ImportApp(newApp)
-		refreshContent()
+		refreshMainWindow()
 	})
 
-	openButton := widget.NewButton("Open", func() {
-		FileExplorer(&executor.App{})
+	fileExlporerButton := widget.NewButton("File Explorer", func() {
+		FileExplorer(pathEntry)
 	})
 
 	nameEntry.SetConfirmButton(okButton)
 	pathEntry.SetConfirmButton(okButton)
 	argsEntry.SetConfirmButton(okButton)
 
-	buttons := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), okButton, layout.NewSpacer(), openButton, layout.NewSpacer(), cancelButton)
+	buttons := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), okButton, layout.NewSpacer(), fileExlporerButton, layout.NewSpacer(), cancelButton)
 
 	importWindow.SetContent(fyne.NewContainerWithLayout(layout.NewVBoxLayout(), form, layout.NewSpacer(), buttons))
 
