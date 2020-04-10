@@ -49,3 +49,8 @@ func RunAppWithArgs(mode, app string) error {
 	}
 	return nil
 }
+
+//RpdPath func
+func RpdPath() string {
+	return rpdPath
+}

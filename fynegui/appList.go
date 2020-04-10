@@ -22,7 +22,9 @@ func importApp() {
 	importWindow.Resize(fyne.NewSize(400, 150))
 
 	nameEntry := NewButtonEntry()
+
 	pathEntry := NewButtonEntry()
+
 	argsEntry := NewButtonEntry()
 
 	/*
@@ -32,7 +34,9 @@ func importApp() {
 	*/
 
 	name := widget.NewFormItem("Name", nameEntry)
+
 	path := widget.NewFormItem("Path", pathEntry)
+
 	args := widget.NewFormItem("Args", argsEntry)
 	form := widget.NewForm(name, path, args)
 
@@ -55,11 +59,15 @@ func importApp() {
 		refreshContent()
 	})
 
+	openButton := widget.NewButton("Open", func() {
+		FileExplorer(&executor.App{})
+	})
+
 	nameEntry.SetConfirmButton(okButton)
 	pathEntry.SetConfirmButton(okButton)
 	argsEntry.SetConfirmButton(okButton)
 
-	buttons := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), okButton, layout.NewSpacer(), cancelButton)
+	buttons := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), okButton, layout.NewSpacer(), openButton, layout.NewSpacer(), cancelButton)
 
 	importWindow.SetContent(fyne.NewContainerWithLayout(layout.NewVBoxLayout(), form, layout.NewSpacer(), buttons))
 
