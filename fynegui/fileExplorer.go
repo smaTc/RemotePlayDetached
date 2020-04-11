@@ -94,17 +94,16 @@ func getDirectoryList(path string) *widget.Group {
 
 	directory := make([]*widget.FormItem, 0)
 
-	previousDir := NewClickLabel(".."+osSeparator, func() {
+	previousDir := NewClickLabel(".."+osSeparator+" (parent directory)", func() {
 		sepCounter := strings.Count(currentPath, osSeparator)
 		pathArray := strings.Split(currentPath, osSeparator)
-		fmt.Println("PathArray", pathArray)
 		newPath := ""
 
 		for i := 0; i < sepCounter; i++ {
 
 			if runtime.GOOS == "windows" {
 				if i == 0 {
-					newPath += pathArray[i] + ":" + osSeparator
+					newPath += pathArray[i] + osSeparator
 				} else if i == 1 {
 					newPath += pathArray[i]
 				} else {
@@ -163,7 +162,7 @@ func rootSelector() *fyne.Container {
 		drives := make([]string, len(partitions))
 
 		for i := 0; i < len(drives); i++ {
-			drives[i] = partitions[i].Mountpoint
+			drives[i] = partitions[i].Mountpoint + osSeparator
 		}
 
 		rootSelect = widget.NewSelect(drives, func(newDir string) {
@@ -191,7 +190,6 @@ func rootSelector() *fyne.Container {
 
 func explorerButtonColumn() *fyne.Container {
 	selectButton := widget.NewButton("Select", func() {
-		fmt.Println("clicked Select")
 		newAppPath := currentPath + osSeparator + selectedItem
 		currentAppPath.SetText(newAppPath)
 		explorerWindow.Close()
@@ -200,7 +198,6 @@ func explorerButtonColumn() *fyne.Container {
 	selectedLabel := widget.NewLabel("Selected: " + selectedItem)
 
 	cancelButton := widget.NewButton("Cancel", func() {
-		fmt.Println("clicked Cancel")
 		explorerWindow.Close()
 	})
 
