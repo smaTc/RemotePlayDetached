@@ -11,6 +11,7 @@ import (
 	"fyne.io/fyne"
 	"fyne.io/fyne/layout"
 	"fyne.io/fyne/widget"
+	"github.com/shirou/gopsutil/disk"
 	"github.com/smaTc/RemotePlayDetached/executor"
 )
 
@@ -40,18 +41,21 @@ func openExplorerWindow(path string) {
 	explorerWindow = rpd.NewWindow("File Explorer")
 	explorerWindow.Resize(fyne.NewSize(600, 500))
 	currentDirectory := getDirectoryList(path)
+
+	rootSel := rootSelector()
 	buttonColumn := explorerButtonColumn()
 
-	explorerContainer := fyne.NewContainerWithLayout(layout.NewBorderLayout(nil, buttonColumn, nil, nil), currentDirectory, buttonColumn)
+	explorerContainer := fyne.NewContainerWithLayout(layout.NewBorderLayout(rootSel, buttonColumn, nil, nil), rootSel, currentDirectory, buttonColumn)
 	explorerWindow.SetContent(explorerContainer)
 
 	explorerWindow.Show()
 }
 
 func refreshExplorer() {
+	rootSel := rootSelector()
 	buttonColumn := explorerButtonColumn()
 	currentDirectory := getDirectoryList(currentPath)
-	explorerContainer := fyne.NewContainerWithLayout(layout.NewBorderLayout(nil, buttonColumn, nil, nil), currentDirectory, buttonColumn)
+	explorerContainer := fyne.NewContainerWithLayout(layout.NewBorderLayout(rootSel, buttonColumn, nil, nil), rootSel, currentDirectory, buttonColumn)
 	explorerWindow.SetContent(explorerContainer)
 
 }
@@ -97,11 +101,23 @@ func getDirectoryList(path string) *widget.Group {
 		newPath := ""
 
 		for i := 0; i < sepCounter; i++ {
-			if i == 0 && sepCounter != 1 {
-				newPath += pathArray[i]
+
+			if runtime.GOOS == "windows" {
+				if i == 0 {
+					newPath += pathArray[i] + ":" + osSeparator
+				} else if i == 1 {
+					newPath += pathArray[i]
+				} else {
+					newPath += osSeparator + pathArray[i]
+				}
 			} else {
-				newPath += osSeparator + pathArray[i]
+				if i == 0 && sepCounter != 1 {
+					newPath += pathArray[i]
+				} else {
+					newPath += osSeparator + pathArray[i]
+				}
 			}
+
 		}
 		currentPath = newPath
 		refreshExplorer()
@@ -143,25 +159,34 @@ func getDirectoryList(path string) *widget.Group {
 func rootSelector() *fyne.Container {
 	var rootSelect *widget.Select
 	if runtime.GOOS == "windows" {
+		partitions, _ := disk.Partitions(false)
+		drives := make([]string, len(partitions))
+
+		for i := 0; i < len(drives); i++ {
+			drives[i] = partitions[i].Mountpoint
+		}
+
+		rootSelect = widget.NewSelect(drives, func(newDir string) {
+			currentPath = newDir
+			refreshExplorer()
+		})
 
 	} else {
 		dirs, _ := getDirectoryContent("/")
-		var dirStrings = make([]string, len(dirs))
-		for i, dir := range dirs {
-			dirStrings[i] = dir.Name()
+		var dirStrings = make([]string, len(dirs)+1)
+		dirStrings[0] = osSeparator
+		for i := 0; i < len(dirs); i++ {
+			dirStrings[i+1] = osSeparator + dirs[i].Name()
 		}
 
 		rootSelect = widget.NewSelect(dirStrings, func(newDir string) {
-			if newDir == osSeparator {
-				currentPath = newDir
-			} else {
-				currentPath = osSeparator + newDir
-			}
+			currentPath = newDir
 			refreshExplorer()
 		})
 	}
+	rootSelect.PlaceHolder = "Drive or Root Directory"
 
-	return fyne.NewContainerWithLayout(layout.NewHBoxLayout(), rootSelect, layout.NewSpacer())
+	return fyne.NewContainerWithLayout(layout.NewHBoxLayout(), layout.NewSpacer(), rootSelect, layout.NewSpacer())
 }
 
 func explorerButtonColumn() *fyne.Container {
