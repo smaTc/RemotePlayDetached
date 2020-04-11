@@ -46,6 +46,8 @@ Now just launch the original game in Steam and enjoy.
 
 You can edit entries and also have arguments applied.
 
+Note: In the `File Explorer` you need to click on a file to select it (the selected file is registerd and can be seen in the window bottom next to `Selected:`) and finish your selection by clicking the `Confirm` button. Also directories are marked with `/`(Linux) or `\`(Windows) and you can change your drive(Windows) or root directory(Linux) from a dropdown by clicking `Drive or Root Directory` in the window top.
+
 ## Command Line Support
 Command Line Support was added in v0.2
 ### Arguments
