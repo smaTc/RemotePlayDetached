@@ -13,6 +13,7 @@ I used [Fyne](https://fyne.io/) for the GUI.
 ## Features
 * Enable Remote Play Together for non-Steam applications
 * Enable Remote Play Together for Steam applications that normally don't support (e.g. added later via mod, thanks to [AkiraJkr](https://github.com/AkiraJkr) for pointing that out)
+* Basic File Explorer for binary selection
 * CLI Support for integrations in other applications (e.g. Playnite, thanks to [darklinkpower](https://github.com/darklinkpower) for suggesting it)
 * Importing/Editing your applications in a list with the option to append launch arguments
 
@@ -40,7 +41,7 @@ Now just launch the original game in Steam and enjoy.
 ## Usage
 1. Start your donor game over Steam.
 2. Click `Import`.
-3. Fill the form. Path must include executable (and extension on Windows).
+3. Fill the form. Path must include executable (and extension on Windows). You can select an executable via the `File Explorer` (since v0.4).
 4. Click `Run`.
 
 You can edit entries and also have arguments applied.
