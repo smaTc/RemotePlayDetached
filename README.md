@@ -27,9 +27,11 @@ For Arch Linux or any other distro that is built upon Arch users, you can find t
 The aur package is not being maintained by the original author, but by @alx365 (discord: !LegendOfMiracles#1719)/
 
 ## Installation
-1. Download a donor game for Remote Play on Steam (search on YouTube if you need help).
+1. Download a donor game for Remote Play on Steam (search on YouTube if you need help). Choose a game which has Remote Play Together enabled.
 2. Delete or move the files in the folder of that game (you can just create a subfolder so you can still launch that game from RPD), but remember the original name of the main binary (file extension included!).
 3. Copy the RPD binary into the folder and rename it to the name of the original binary.
+
+Note: A `donor game` is a game installed via Steam of which the binaries are replaced. It "donates" its Steam privileges for RPD. 
 
 ### Linux only
 * Instead of doing the installation as stated above you can use the launch options to point directly to the RPD binary
@@ -93,8 +95,9 @@ Tested on Windows and Linux. Working so far.
 * If you have problems with Streaming you should check the Steam Settings first. If there are still any problems leave me a message or open an issue here on GitHub
 * If you encounter the error `Steam Error: application load error V:xxxxxxxxx` it means Steam is blocking the execution of that game if it is initiated by another Steam game
 
-## Feedback and Contribution
-Feedback and Contributions are welcome. If you have improvements just open a pull request and I will have a look at your proposal. If there are any questions, feedback or suggestions just leave me a message or join the [Discord Server](https://discord.gg/U3zDs6N).
+## Feedback, suggestions and contribution
+Feedback, suggestions and contributions are welcome. If you have improvements just open a pull request and I will have a look at your proposal. If there are any questions, feedback or suggestions just leave me a message or join the [Discord Server](https://discord.gg/U3zDs6N).
 
-## Email
+## Contact
 [smatcx@gmail.com](mailto:smatcx@gmail.com)
+[Discord](https://discord.gg/U3zDs6N)
