@@ -39,9 +39,11 @@ func importApp() {
 
 	args := widget.NewFormItem("Args", argsEntry)
 	form := widget.NewForm(name, path, args)
-
 	cancelButton := widget.NewButton("Cancel", func() {
 		importWindow.Close()
+		if explorerWindow != nil {
+			explorerWindow.Close()
+		}
 	})
 
 	okButton := widget.NewButton("OK", func() {

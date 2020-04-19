@@ -18,7 +18,7 @@ import (
 var currentDirectory *widget.Group
 var selectedItem string
 var currentAppPath *ButtonEntry
-var explorerWindow fyne.Window
+var explorerWindow fyne.Window = nil
 var currentPath string
 var osSeparator = ""
 
@@ -133,6 +133,10 @@ func getDirectoryList(path string) *widget.Group {
 			} else {
 				currentPath += osSeparator + dirName
 			}
+
+			if runtime.GOOS == "windows" {
+				currentPath = strings.Replace(currentPath, "\\\\", "\\", -1)
+			}
 			refreshExplorer()
 		})
 		formEntry := widget.NewFormItem("", entry)
@@ -189,14 +193,10 @@ func rootSelector() *fyne.Container {
 }
 
 func explorerButtonColumn() *fyne.Container {
-	confirmButton := widget.NewButton("Confirm", func() {
-		if selectedItem != "" {
-			newAppPath := currentPath + osSeparator + selectedItem
-			currentAppPath.SetText(newAppPath)
-			explorerWindow.Close()
-		} else {
-			TextPopup("No file selected!", "Problem:")
-		}
+	selectButton := widget.NewButton("Select", func() {
+		newAppPath := currentPath + osSeparator + selectedItem
+		currentAppPath.SetText(newAppPath)
+		explorerWindow.Close()
 	})
 
 	selectedLabel := widget.NewLabel("Selected: " + selectedItem)
@@ -205,6 +205,6 @@ func explorerButtonColumn() *fyne.Container {
 		explorerWindow.Close()
 	})
 
-	buttonBar := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), confirmButton, layout.NewSpacer(), selectedLabel, layout.NewSpacer(), cancelButton)
+	buttonBar := fyne.NewContainerWithLayout(layout.NewHBoxLayout(), selectButton, layout.NewSpacer(), selectedLabel, layout.NewSpacer(), cancelButton)
 	return buttonBar
 }
