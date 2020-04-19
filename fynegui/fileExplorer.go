@@ -173,9 +173,15 @@ func rootSelector() *fyne.Container {
 			currentPath = newDir
 			refreshExplorer()
 		})
-
 	} else {
 		dirs, _ := getDirectoryContent("/")
+
+		for i := 0; i < len(dirs); i++ {
+			if dirs[i].Name() == "root" {
+				dirs = append(dirs[:i], dirs[i+1:]...)
+			}
+		}
+
 		var dirStrings = make([]string, len(dirs)+1)
 		dirStrings[0] = osSeparator
 		for i := 0; i < len(dirs); i++ {
