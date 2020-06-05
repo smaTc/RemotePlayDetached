@@ -75,6 +75,22 @@ To start an app directly via [Playnite](https://playnite.link/) do the following
 4. In the `Actions` Tab click `Add Action` and fill out the Path to Steam and put this in Arguments `-applaunch <app-id of donor Game> -arg <App or Path>`.
 5. Click `Save` and you're ready to go.
 
+### Windows Apps/Xbox Games
+To use Windows Apps or Xbox games with RPD requires the use of `UWPHook`.
+1. Follow the instructions to add your games to `Steam` with [UWPHook](https://github.com/BrianLima/UWPHook).
+2. Right click the game in `Steam` and click `Properties`.
+3. Take note of the the `UWPHook` file path and launch arguments.
+4. Run RPD as normal and click `Import`.
+5. Enter the exe location of `UWPHook` as the `file path`.
+6. Provide the launch arguments given on the `Properties` page.
+7. Run the game through `RPD`.
+
+* Example: 
+
+Name: Streets of Rage 4
+Path: C:\Program Files (x86)\Briano\UWPHook\UWPHook.exe
+Args: DotEmu.StreetsofRage4_map6zyh9ym1xy!App
+
 ### AppID
 You can find the AppID of your donor game on [SteamDB](https://steamdb.info/).
 
