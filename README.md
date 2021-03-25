@@ -91,6 +91,8 @@ Name: Streets of Rage 4
 Path: C:\Program Files (x86)\Briano\UWPHook\UWPHook.exe
 Args: DotEmu.StreetsofRage4_map6zyh9ym1xy!App
 
+*Warning: Users reported that UWPHook does not work for many games with RPD* 
+
 ### AppID
 You can find the AppID of your donor game on [SteamDB](https://steamdb.info/).
 
@@ -110,7 +112,7 @@ Tested on Windows and Linux. Working so far.
 ## Toubleshooting
 * If you have problems with Streaming you should check the Steam Settings first. If there are still any problems leave me a message or open an issue here on GitHub
 * If you encounter the error `Steam Error: application load error V:xxxxxxxxx` it means Steam is blocking the execution of that game if it is initiated by another Steam game
-* Please beware if you have some games running and others don't it probably means that this is a game related issue. Many games just don't work because other launchers (through framework integration or similar) or the game itself blocks the correct execution via RPD and this is something that cannot be fixed.
+* Please beware if you have some games running and others don't it probably means that this is a game related issue. Many games just don't work because other launchers (through framework integration or similar) or the game itself block the correct execution via RPD and this is something that cannot be fixed.
 
 ## Feedback, suggestions and contribution
 Feedback, suggestions and contributions are welcome. If you have improvements just open a pull request and I will have a look at your proposal. If there are any questions, feedback or suggestions just leave me a message or join the [Discord Server](https://discord.gg/U3zDs6N).
