@@ -114,12 +114,12 @@ Tested on Windows and Linux. Working so far.
 * If you encounter the error `Steam Error: application load error V:xxxxxxxxx` it means Steam is blocking the execution of that game if it is initiated by another Steam game
 * Please beware if you have some games running and others don't it probably means that this is a game related issue. Many games just don't work because other launchers (through framework integration or similar) or the game itself block the correct execution via RPD and this is something that cannot be fixed.
 
-### My friend can only see the RemotePlayDetached process and not the game.
+### My friend can only see the RemotePlayDetached process and not the game
 * Make sure if you can open the Steam Overlay in the game you started via RDP.
-* If this is not the case, your SteamService might not be working correctly. To fix this do the following:
+* If this is not the case, your SteamService might not be working correctly. To fix this do the following (for Windows, Linux users need to adapt it for their platform):
 1. Close Steam completely (right-click the tray icon and choose "exit")
 2. Press WIN + R
-3. type `"PATH\TO\STEAMFolder\bin\SteamService.exe" /repair`
+3. type `"PATH\TO\STEAM_Folder\bin\SteamService.exe" /repair` 
 4. Restart Steam
 
 ## Feedback, suggestions and contribution
