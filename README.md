@@ -113,7 +113,7 @@ For Cross Compiling you can use [Fyne-Cross](https://fyne.io//develop/cross-comp
 Tested on Windows and Linux. Working so far.
 
 ## Toubleshooting
-* If you have problems with Streaming you should check the Steam Settings first. If there are still any problems leave me a message or open an issue here on GitHub
+* If you have problems with Streaming you should check the Steam Settings first. If there are still any problems join the Discord or open an issue here on GitHub
 * If you encounter the error `Steam Error: application load error V:xxxxxxxxx` it means Steam is blocking the execution of that game if it is initiated by another Steam game
 * Please beware if you have some games running and others don't it probably means that this is a game related issue. Many games just don't work because other launchers (through framework integration or similar) or the game itself block the correct execution via RPD and this is something that cannot be fixed.
 
