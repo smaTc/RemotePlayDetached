@@ -5,9 +5,6 @@ If you like my work and want to sponsor some beers for me, feel free to donate.
 ## Disclaimer
 Don't join the Discord server if you did not read the README below, especially the troubleshooting section. If you're trying to do something like letting your friend play PS Remote/watch a movie stream or anything similar, do not ask for help.
 
-## Discord
-I set up a [Discord Server](https://discord.gg/U3zDs6N) for anyone who wants to give feedback, suggestions or contributions.
-
 ## About
 A simple launcher that is able to launch any external game or application with Steam Remote Play Together Support (Steam Overlay works as soon as the Fullscreen is available).
 
@@ -126,8 +123,7 @@ Tested on Windows and Linux. Working so far.
 4. Restart Steam
 
 ## Feedback, suggestions and contribution
-Feedback, suggestions and contributions are welcome. If you have improvements just open a pull request and I will have a look at your proposal. If there are any questions, feedback or suggestions just leave me a message or join the [Discord Server](https://discord.gg/U3zDs6N).
+Feedback, suggestions and contributions are welcome. If you have improvements just open a pull request and I will have a look at your proposal. If there are any questions, feedback or suggestions open an issue or leave me a message.
 
 ## Contact
-[smatcx@gmail.com](mailto:smatcx@gmail.com)\
-[Discord](https://discord.gg/U3zDs6N)
+[smatcx@gmail.com](mailto:smatcx@gmail.com)
