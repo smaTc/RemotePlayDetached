@@ -1,6 +1,4 @@
-# Remote Play Detached (RPD) 
-If you like my work and want to sponsor some beers for me, feel free to donate.
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U6DXYQPU7JLJL)
+# Remote Play Detached (RPD)
 
 ## Disclaimer
 Don't join the Discord server if you did not read the README below, especially the troubleshooting section. If you're trying to do something like letting your friend play PS Remote/watch a movie stream or anything similar, do not ask for help.
