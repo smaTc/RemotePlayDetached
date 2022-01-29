@@ -1,7 +1,7 @@
 # Remote Play Detached (RPD)
 
 ## Disclaimer
-Don't join the Discord server if you did not read the README below, especially the troubleshooting section. If you're trying to do something like letting your friend play PS Remote/watch a movie stream or anything similar, do not ask for help.
+Don't open issues if you did not read the README below, especially the troubleshooting section. If you're trying to do something like letting your friend play PS Remote/watch a movie stream or anything similar, do not ask for help.
 
 ## About
 A simple launcher that is able to launch any external game or application with Steam Remote Play Together Support (Steam Overlay works as soon as the Fullscreen is available).
