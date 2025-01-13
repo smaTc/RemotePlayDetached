@@ -54,11 +54,20 @@ func executeApp(app App) error {
 		}
 	}
 
-	err := cmd.Start()
-	if err != nil {
-		fmt.Println(err)
-		return err
+	if (exitAfterExec) {
+		err := cmd.Run()
+		if err != nil {
+			fmt.Println(err)
+			return err
+		}
+	} else {
+		err := cmd.Start()
+		if err != nil {
+			fmt.Println(err)
+			return err
+		}
 	}
+
 	return nil
 
 }
