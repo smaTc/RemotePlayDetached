@@ -54,13 +54,20 @@ func executeApp(app App) error {
 		}
 	}
 
-	err := cmd.Start()
+	var err error
+
+	if (exitAfterExec) {
+		err = cmd.Run()
+	} else {
+		err = cmd.Start()
+	}
+
 	if err != nil {
 		fmt.Println(err)
 		return err
 	}
-	return nil
 
+	return nil
 }
 
 func seperatePathFromExecutable(path string) (string, string, string) {
