@@ -1,0 +1,27 @@
+name: Upload Go test results
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: [ '1.13']
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go-version }}
+      - name: Install dependencies
+        run: go get .
+      - name: Build Code
+        run: sh ./build.sh
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: RPD
+          path: ./build/
