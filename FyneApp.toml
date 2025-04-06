@@ -1,5 +1,5 @@
 [Details]
-Icon = "resources/logo.pngg"
+Icon = "resources/logo.png"
 Name = "Remote Play Detached"
 ID = "app.rpd"
 Version = "0.4.2"
