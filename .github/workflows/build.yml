@@ -23,7 +23,7 @@ jobs:
       - name: Install Go dependencies
         run: go get .
       - name: Build Code
-        run: sh ./build.sh
+        run: bash ./build.sh
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
