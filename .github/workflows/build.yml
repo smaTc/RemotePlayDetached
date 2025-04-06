@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: [ '1.13']
+        go-version: [ '1.19']
 
     steps:
       - uses: actions/checkout@v4
@@ -19,7 +19,7 @@ jobs:
       - name: Install APT dependencies
         run: sudo apt install -y libglw1-mesa-dev libglfw3-dev libx11-dev libxcursor-dev libxinerama-dev libxxf86vm-dev libxi-dev
       - name: Install Fyne-Cross
-        run: go install github.com/fyne-io/fyne-cross@v1.1.3
+        run: go install github.com/fyne-io/fyne-cross@latest
       - name: Install Go dependencies
         run: go get .
       - name: Build Code
