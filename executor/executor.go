@@ -9,7 +9,7 @@ import (
 var apps = make([]App, 0)
 var rpdPath string
 
-//Init func
+// Init func
 func Init() []App {
 	wd, err := os.Getwd()
 	if err != nil {
@@ -24,16 +24,16 @@ func Init() []App {
 	return nil
 }
 
-//RunApp func
+// RunApp func
 func RunApp(app App) error {
 	return executeApp(app)
 }
 
-//RunAppWithArgs func
+// RunAppWithArgs func
 func RunAppWithArgs(mode, app string) error {
 	switch mode {
 	case "direct":
-		return executeApp(App{Path: app})
+		return executeApp(App{GamePath: app})
 	case "list":
 		var found bool = false
 		for _, listApp := range apps {
@@ -50,7 +50,7 @@ func RunAppWithArgs(mode, app string) error {
 	return nil
 }
 
-//RpdPath func
+// RpdPath func
 func RpdPath() string {
 	return rpdPath
 }

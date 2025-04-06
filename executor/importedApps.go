@@ -10,13 +10,13 @@ import (
 	"strings"
 )
 
-//GetApps func
+// GetApps func
 func GetApps() *[]App {
 	fmt.Println("imported Apps:", apps)
 	return &apps
 }
 
-//ImportApp func
+// ImportApp func
 func ImportApp(app App) {
 	err := os.Chdir(rpdPath)
 	if err != nil {
@@ -32,8 +32,23 @@ func ImportApp(app App) {
 
 	defer f.Close()
 
+	if app.ProtonPath == "" {
+		app.ProtonPath = "none"
+	}
+
+	if app.WinePrefixPath == "" {
+		app.WinePrefixPath = "none"
+	}
+
+	if app.CompatDataPath == "" {
+		app.CompatDataPath = "none"
+	}
+
 	f.WriteString(app.Name + "\n")
-	f.WriteString(app.Path + "\n")
+	f.WriteString(app.GamePath + "\n")
+	f.WriteString(app.ProtonPath + "\n")
+	f.WriteString(app.WinePrefixPath + "\n")
+	f.WriteString(app.CompatDataPath + "\n")
 	if app.Args != "" {
 		f.WriteString(app.Args)
 	}
@@ -44,13 +59,13 @@ func ImportApp(app App) {
 	sortApps()
 }
 
-//EditApp func
+// EditApp func
 func EditApp(oldApp, newApp App) {
 	DeleteApp(oldApp)
 	ImportApp(newApp)
 }
 
-//DeleteApp func
+// DeleteApp func
 func DeleteApp(app App) {
 	err := os.Chdir(rpdPath)
 	if err != nil {
@@ -93,9 +108,9 @@ func loadImportedApps() []App {
 		}
 		cleanStrings(&config)
 
-		newApp := App{Name: config[0], Path: config[1]}
-		if len(config) == 3 {
-			newApp.Args = config[2]
+		newApp := App{Name: config[0], GamePath: config[1], ProtonPath: config[2], WinePrefixPath: config[3], CompatDataPath: config[4]}
+		if len(config) == 6 {
+			newApp.Args = config[5]
 		}
 
 		loadedApps = append(loadedApps, newApp)
@@ -123,5 +138,6 @@ func checkForDataFolder() bool {
 func cleanStrings(str *[]string) {
 	for i := 0; i < len(*str); i++ {
 		(*str)[i] = strings.Replace((*str)[i], "\n", "", -1)
+		(*str)[i] = strings.Replace((*str)[i], "none", "", -1)
 	}
 }

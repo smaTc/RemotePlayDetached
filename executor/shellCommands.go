@@ -11,17 +11,17 @@ import (
 var threaded bool = false
 var exitAfterExec = false
 
-//Threaded func
+// Threaded func
 func Threaded(b bool) {
 	threaded = b
 }
 
-//SetExitAfterExec func
+// SetExitAfterExec func
 func SetExitAfterExec(b bool) {
 	exitAfterExec = b
 }
 
-//IsThreaded func
+// IsThreaded func
 func IsThreaded() bool {
 	return threaded
 }
@@ -35,7 +35,7 @@ func executeApp(app App) error {
 		argsArray = strings.Split(app.Args, " ")
 	}
 
-	path, executable, seperator := seperatePathFromExecutable(app.Path)
+	path, executable, seperator := seperatePathFromExecutable(app.GamePath)
 	os.Chdir(rpdPath)
 	os.Chdir(path)
 
@@ -47,16 +47,33 @@ func executeApp(app App) error {
 	if runtime.GOOS == "windows" {
 		cmd = exec.Command(executable, argsArray...)
 	} else {
-		if path != "" {
-			cmd = exec.Command("."+seperator+executable, argsArray...)
-		} else {
-			cmd = exec.Command(executable, argsArray...)
+
+		execLine := ""
+
+		if strings.Contains(executable, ".exe") {
+			compatEnv := "STEAM_COMPAT_DATA_PATH=" + app.CompatDataPath
+			prefixEnv := "WINEPREFIX=" + app.WinePrefixPath
+			protonExec := "\"" + app.ProtonPath + "\""
+			execLine = compatEnv + " " + prefixEnv + " " + protonExec + " run "
 		}
+
+		seperator = seperator
+		/* if path != "" {
+			execLine += "." + seperator + executable
+		} else {
+			execLine += executable
+		} */
+
+		execLine += app.GamePath
+
+		cmd = exec.Command("$PWD")
+		cmd.Run()
+		cmd = exec.Command(execLine, argsArray...)
 	}
 
 	var err error
 
-	if (exitAfterExec) {
+	if exitAfterExec {
 		err = cmd.Run()
 	} else {
 		err = cmd.Start()
@@ -93,5 +110,6 @@ func seperatePathFromExecutable(path string) (string, string, string) {
 		executable = splittedPath[len(splittedPath)-1]
 		directoryPath = strings.Replace(path, executable, "", -1)
 	}
+
 	return directoryPath, executable, seperator
 }

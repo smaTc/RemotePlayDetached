@@ -8,10 +8,10 @@ import (
 	"github.com/smaTc/RemotePlayDetached/fynegui"
 )
 
-//VERSION const
-const VERSION = "0.4.2"
+// VERSION const
+const VERSION = "0.5.0"
 
-//noGui bool
+// noGui bool
 var noGui bool = false
 
 var runDirectly string = ""
