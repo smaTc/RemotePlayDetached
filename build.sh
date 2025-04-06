@@ -26,6 +26,7 @@ fi
 
 printf "building binaries..."
 CGO_ENABLED=1 fyne-cross linux .
+CGO_ENABLED=1 fyne-cross windows .
 
 rm -rf build/fyne-cross
 mv fyne-cross build/
