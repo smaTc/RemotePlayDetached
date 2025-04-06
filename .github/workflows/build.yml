@@ -1,4 +1,4 @@
-name: Upload Go test results
+name: Build RPD
 
 on: [push]
 
