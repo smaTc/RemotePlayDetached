@@ -25,8 +25,8 @@ fi
 
 
 printf "building binaries..."
-CGO_ENABLED=1 fyne-cross linux .
-CGO_ENABLED=1 fyne-cross windows .
+CGO_ENABLED=1 fyne-cross linux . --appID rpd --icon=resources/logo.png
+CGO_ENABLED=1 fyne-cross windows . --appID rpd --icon=resources/logo.png
 
 rm -rf build/fyne-cross
 mv fyne-cross build/
