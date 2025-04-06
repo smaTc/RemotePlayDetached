@@ -16,9 +16,9 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go-version }}
-      - name: APT deps
-        run: sudo apt install -y libglw1-mesa-dev libglfw3-dev libx11-dev
-      - name: Install dependencies
+      - name: Install APT dependencies
+        run: sudo apt install -y libglw1-mesa-dev libglfw3-dev libx11-dev libxcursor
+      - name: Install Go dependencies
         run: go get .
       - name: Build Code
         run: sh ./build.sh
