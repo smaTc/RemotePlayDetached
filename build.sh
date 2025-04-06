@@ -25,7 +25,7 @@ fi
 
 
 printf "building binaries..."
-fyne-cross --targets=linux/amd64,windows/amd64 --icon=resources/logo.png .
+CGO_ENABLED=1 fyne-cross linux .
 
 rm -rf build/fyne-cross
 mv fyne-cross build/
