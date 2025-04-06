@@ -19,7 +19,7 @@ jobs:
       - name: Install APT dependencies
         run: sudo apt install -y libglw1-mesa-dev libglfw3-dev libx11-dev libxcursor-dev libxinerama-dev libxxf86vm-dev libxi-dev
       - name: Install Fyne-Cross
-        run: go install github.com/fyne-io/fyne-cross@latest && ls -al /bin | grep fyne
+        run: go install github.com/fyne-io/fyne-cross@latest
       - name: Install Go dependencies
         run: go get .
       - name: Build Code
