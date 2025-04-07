@@ -2,6 +2,7 @@ package executor
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"os/exec"
 	"runtime"
@@ -39,9 +40,6 @@ func executeApp(app App) error {
 	os.Chdir(rpdPath)
 	os.Chdir(path)
 
-	p2, _ := os.Getwd()
-	fmt.Println("path for execution:", p2, "; executable to run:", executable)
-
 	var cmd *exec.Cmd
 
 	if runtime.GOOS == "windows" {
@@ -49,12 +47,20 @@ func executeApp(app App) error {
 	} else {
 
 		execLine := ""
+		envs := make([]string, 0)
 
 		if strings.Contains(executable, ".exe") {
-			compatEnv := "STEAM_COMPAT_DATA_PATH=" + app.CompatDataPath
-			prefixEnv := "WINEPREFIX=" + app.WinePrefixPath
+			compatInstallEnv := "STEAM_COMPAT_CLIENT_INSTALL=$HOME/.steam"
+			compatDataEnv := "STEAM_COMPAT_DATA_PATH=" + app.CompatDataPath
+			prefixEnv := "WINEPREFIX=" + app.CompatDataPath + "pfx"
+
+			envs = append(envs, compatInstallEnv, compatDataEnv, prefixEnv)
+
+			//FIXME: path to proton executable not running due to whitespaces
 			protonExec := "\"" + app.ProtonPath + "\""
-			execLine = compatEnv + " " + prefixEnv + " " + protonExec + " run "
+			execLine = /* compatInstallEnv + " " + compatDataEnv + " " + prefixEnv + " " +  */ protonExec + " run "
+
+			os.Chdir(app.CompatDataPath + "pfx")
 		}
 
 		seperator = seperator
@@ -65,11 +71,14 @@ func executeApp(app App) error {
 		} */
 
 		execLine += app.GamePath
-
-		cmd = exec.Command("$PWD")
-		cmd.Run()
+		log.Println("execLine: ", execLine)
 		cmd = exec.Command(execLine, argsArray...)
+		cmd.Env = os.Environ()
+		cmd.Env = append(cmd.Env, envs...)
 	}
+
+	p2, _ := os.Getwd()
+	fmt.Println("path for execution:", p2, "; executable to run:", executable)
 
 	var err error
 
