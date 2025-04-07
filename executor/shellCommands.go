@@ -58,7 +58,7 @@ func executeApp(app App) error {
 
 			//FIXME: path to proton executable not running due to whitespaces
 			protonExec := "\"" + app.ProtonPath + "\""
-			execLine = /* compatInstallEnv + " " + compatDataEnv + " " + prefixEnv + " " +  */ protonExec + " run "
+			execLine = /* compatInstallEnv + " " + compatDataEnv + " " + prefixEnv + " " +  */ protonExec // + " run "
 
 			os.Chdir(app.CompatDataPath + "pfx")
 		}
@@ -70,9 +70,11 @@ func executeApp(app App) error {
 			execLine += executable
 		} */
 
-		execLine += app.GamePath
+		//execLine += "\"" + app.GamePath + "\""
 		log.Println("execLine: ", execLine)
-		cmd = exec.Command(execLine, argsArray...)
+		log.Println("ENVS:", envs)
+		//cmd = exec.Command(execLine, argsArray...)
+		cmd = exec.Command(app.ProtonPath, []string{"run", app.GamePath}...)
 		cmd.Env = os.Environ()
 		cmd.Env = append(cmd.Env, envs...)
 	}
