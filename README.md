@@ -51,7 +51,7 @@ Note: In the `File Explorer` you need to click on a file to select it (the selec
 ## Command Line Support
 Command Line Support was added in v0.2
 ### Arguments
-* `-s` or `-silence` to disable the GUI (cannot be used alone)
+* `-s` or `-silent` to disable the GUI (cannot be used alone)
 * `-a` or `-app` to run an app from your list by its name
 * `-as` or `-appsilent` to run an app from your list without GUI
 * `-r` or `-run` to run an app from the given path
