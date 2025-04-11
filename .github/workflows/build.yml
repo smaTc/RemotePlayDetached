@@ -1,6 +1,9 @@
 name: Build RPD
 
-on: [push]
+on: 
+  push:
+    branches:
+      - release
 
 jobs:
   build:
