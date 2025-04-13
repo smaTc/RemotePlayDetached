@@ -46,7 +46,7 @@ func executeApp(app App) error {
 
 	var cmd *exec.Cmd
 
-	var gameDirectory, executable, seperator string
+	var gameDirectory, executable, seperator, execLine string
 	var sepError error
 
 	if runtime.GOOS == "windows" {
@@ -66,36 +66,29 @@ func executeApp(app App) error {
 
 	if isProtonExecution {
 		log.Println("proton execution")
-		/* execLine := ""
+
 		envs := make([]string, 0)
 
-		compatInstallEnv := "STEAM_COMPAT_CLIENT_INSTALL=$HOME/.steam"
+		prefixPath := app.CompatDataPath + "pfx"
+		compatInstallEnv := "STEAM_COMPAT_CLIENT_INSTALL=" + os.Getenv("HOME") + "/.steam"
 		compatDataEnv := "STEAM_COMPAT_DATA_PATH=" + app.CompatDataPath
-		prefixEnv := "WINEPREFIX=" + app.CompatDataPath + "pfx"
+		prefixEnv := "WINEPREFIX=" + prefixPath
 
 		envs = append(envs, compatInstallEnv, compatDataEnv, prefixEnv)
-
-		//FIXME: path to proton executable not running due to whitespaces
-		protonExec := "\"" + app.ProtonPath + "\""
-		execLine = /* compatInstallEnv + " " + compatDataEnv + " " + prefixEnv + " " +  */ //protonExec // + " run "
-		//os.Chdir(app.CompatDataPath + "pfx") */
-
-		//execLine += "\"" + app.GamePath + "\""
-		/* log.Println("execLine: ", execLine)
 		log.Println("ENVS:", envs)
-		//cmd = exec.Command(execLine, argsArray...)
-		cmd = exec.Command(app.ProtonPath, []string{"run", app.GamePath}...)
 		cmd.Env = os.Environ()
 		cmd.Env = append(cmd.Env, envs...)
 
-		p2, _ := os.Getwd()
-		fmt.Println("path for execution:", p2, "; executable to run:", executable) */
+		protonExec := "\"" + app.ProtonPath + "\""
+		gameExec := "\"" + app.GamePath + "\""
+		execLine = protonExec + " run " + gameExec
+		os.Chdir(prefixPath)
 	} else {
 		log.Println("changing dir to path:", gameDirectory)
 		os.Chdir(gameDirectory)
+		execLine = "." + seperator + executable
 	}
 
-	execLine := "." + seperator + executable
 	cmd = exec.Command(execLine, argsArray...)
 
 	var err error
@@ -155,8 +148,7 @@ func separatePathFromExec(path, seperator string) (string, string, error) {
 		return "", "", errors.New("path cannot be empty")
 	}
 
-	var splittedPath []string
-	splittedPath = strings.Split(path, seperator)
+	splittedPath := strings.Split(path, seperator)
 
 	executable := splittedPath[len(splittedPath)-1]
 	directoryPath := strings.Replace(path, executable, "", -1)
