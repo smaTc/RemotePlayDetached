@@ -53,9 +53,10 @@ func executeApp(app App) error {
 		seperator = "\\"
 	} else {
 		seperator = "/"
-		if strings.Contains(executable, ".exe") {
+
+		/* if strings.Contains(executable, ".exe") {
 			isProtonExecution = true
-		}
+		} */
 	}
 
 	executable, gameDirectory, sepError = separatePathFromExec(app.GamePath, seperator)
