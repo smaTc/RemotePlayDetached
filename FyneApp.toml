@@ -2,5 +2,5 @@
 Icon = "resources/logo.png"
 Name = "RemotePlayDetached"
 ID = "app.rpd"
-Version = "0.4.2"
+Version = "0.4.4"
 Build = 1
