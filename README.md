@@ -70,8 +70,10 @@ To start an app directly via [Playnite](https://playnite.link/) do the following
 1. Click on the Controller icon in the upper left corner.
 2. Click `Add Game`->`Manually...`.
 3. Fill in the Name in the `General` Tab.
-4. In the `Actions` Tab click `Add Action` and fill out the Path to Steam and put this in Arguments `-applaunch <app-id of donor Game> -arg <App or Path>`.
-5. Click `Save` and you're ready to go.
+4. In the `Actions` Tab click `Add Action`
+5. Fill out the `Path` field to point to the steam.exe file and put the following in the `Arguments` field: `-applaunch <app-id of donor Game> -arg <App or Path>`.
+6. Change `Tracking Mode` to `Folder` and put the path to the donor game within the `Tracking Path` field.
+7. Click `Save` and you're ready to go.
 
 ### Windows Apps/Xbox Games
 To use Windows Apps or Xbox games with RPD requires the use of `UWPHook`.
@@ -119,6 +121,10 @@ Tested on Windows and Linux. Working so far.
 2. Press WIN + R
 3. type `"PATH\TO\STEAM_Folder\bin\SteamService.exe" /repair` 
 4. Restart Steam
+
+### My controller does not work
+* Make sure that "Steam Input" has been enabled for the donor game.
+* Within Steam Big Picture mode, change the controller settings of the game to make use of the "Gamepad" template layout instead of the game's default layout.
 
 ## Feedback, suggestions and contribution
 Feedback, suggestions and contributions are welcome. If you have improvements just open a pull request and I will have a look at your proposal. If there are any questions, feedback or suggestions open an issue or leave me a message.
